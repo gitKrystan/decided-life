@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'matrices#index'
   resources :matrices do
     resources :criteria
+    resources :options
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

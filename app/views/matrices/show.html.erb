@@ -5,6 +5,11 @@
   Add Criterium
 <% end %>
 
+<%= link_to new_matrix_option_path(@matrix), id: 'new-option',
+                                       class: 'btn btn-small btn-primary' do %>
+  Add Option
+<% end %>
+
 <%= link_to edit_matrix_path(@matrix), id: 'edit-matrix',
                                        class: 'btn btn-small btn-warning' do %>
   Edit <%= @matrix.name %>
@@ -31,6 +36,27 @@
                   data: { confirm: 'You sure?',
                           method: 'delete'},
                   id: "delete-criterium-#{criterium.id}",
+                  class: 'btn btn-small btn-danger' %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @options.any? %>
+  <h2>Your Options</h2>
+  <ul>
+    <% @options.each do |option| %>
+    <li>
+      <%= option.name %> |
+      <%= link_to 'Edit',
+                  edit_matrix_option_path(@matrix, option),
+                  id: "edit-option-#{option.id}",
+                  class: 'btn btn-small btn-warning' %> |
+      <%= link_to 'Delete',
+                  matrix_option_path(@matrix, option),
+                  data: { confirm: 'You sure?',
+                          method: 'delete'},
+                  id: "delete-option-#{option.id}",
                   class: 'btn btn-small btn-danger' %>
     </li>
     <% end %>
