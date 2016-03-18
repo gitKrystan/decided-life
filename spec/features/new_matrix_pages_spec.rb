@@ -5,13 +5,13 @@ feature 'Creating a new Matrix:' do
     visit matrices_path
     click_on 'new-matrix'
     fill_in 'Name', with: 'Test Matrix'
-    click_button 'create-matrix'
+    click_button 'save-matrix'
     expect(page).to have_content('Test Matrix')
   end
 
   scenario 'Returns an error when a validated field is not entered' do
     visit new_matrix_path
-    click_button 'create-matrix'
+    click_button 'save-matrix'
     expect(page).to have_content('errors')
   end
 end
