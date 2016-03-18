@@ -14,4 +14,11 @@ feature 'Editing a Matrix:' do
     click_button 'save-matrix'
     expect(page).to have_content('Updated Matrix Name')
   end
+
+  scenario 'Returns an error when a validated field is not entered' do
+    visit edit_matrix_path(@test_matrix)
+    fill_in 'Name', with: ''
+    click_button 'save-matrix'
+    expect(page).to have_content('errors')
+  end
 end
