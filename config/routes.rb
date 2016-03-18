@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'matrices#index'
   resources :matrices do
-    resources :criteria
-    resources :options
+    resources :criteria, except: [:show, :index]
+    resources :options, except: [:show, :index]
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
