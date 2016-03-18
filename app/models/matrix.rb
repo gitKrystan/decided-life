@@ -17,5 +17,23 @@ class Matrix < ActiveRecord::Base
   # criteria.create(attributes = {})
   # criteria.create!(attributes = {})
 
+  has_many :options
+  # options(force_reload = false)
+  # options<<(object, ...)
+  # options.delete(object, ...)
+  # options.destroy(object, ...)
+  # options=(objects)
+  # options_singular_ids
+  # options_singular_ids=(ids)
+  # options.clear
+  # options.empty?
+  # options.size
+  # options.find(...)
+  # options.where(...)
+  # options.exists?(...)
+  # options.build(attributes = {}, ...)
+  # options.create(attributes = {})
+  # options.create!(attributes = {})
+
   validates :name, presence: true
 end
