@@ -50,3 +50,7 @@ group :development do
   # Quiet Assets mutes assets pipeline log messages.
   gem 'quiet_assets'
 end
+
+group :test do
+  gem 'shoulda-matchers'
+end
