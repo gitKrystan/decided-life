@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318180650) do
+ActiveRecord::Schema.define(version: 20160318232941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20160318180650) do
     t.integer  "matrix_id"
     t.string   "name"
     t.integer  "sequence"
-    t.integer  "weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "weight",     default: 100
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "criteria", ["matrix_id"], name: "index_criteria_on_matrix_id", using: :btree
