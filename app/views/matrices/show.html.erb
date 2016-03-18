@@ -26,7 +26,7 @@
   <ul>
     <% @criteria.each do |criterium| %>
     <li>
-      <%= criterium.name %> |
+      <%= criterium.name %> | Weight: <%= criterium.weight %> | 
       <%= link_to 'Edit',
                   edit_matrix_criterium_path(@matrix, criterium),
                   id: "edit-criterium-#{criterium.id}",
