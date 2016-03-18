@@ -2,6 +2,7 @@ class MatricesController < ApplicationController
   before_action :set_matrix, only: [:show]
 
   def index
+    @matrices = Matrix.order(created_at: :desc)
   end
 
   def show

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'matrices#index'
   resources :matrices
   # The priority is based upon order of creation:
   # first created -> highest priority.
