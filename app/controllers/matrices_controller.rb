@@ -6,6 +6,7 @@ class MatricesController < ApplicationController
   end
 
   def show
+    @criteria = @matrix.criteria.order(:name) # TODO: order by user sequence
   end
 
   def new
