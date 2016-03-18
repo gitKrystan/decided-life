@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'matrices#index'
-  resources :matrices
+  resources :matrices do
+    resources :criteria
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
   # See how all your routes lay out with "rake routes".
