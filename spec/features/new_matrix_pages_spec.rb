@@ -8,4 +8,10 @@ feature 'Creating a new Matrix:' do
     click_button 'create-matrix'
     expect(page).to have_content('Test Matrix')
   end
+
+  scenario 'Returns an error when a validated field is not entered' do
+    visit new_matrix_path
+    click_button 'create-matrix'
+    expect(page).to have_content('errors')
+  end
 end

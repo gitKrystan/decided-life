@@ -1,3 +1,5 @@
+<%= render 'layouts/errors', object: @matrix %>
+
 <%= form_for(@matrix) do |f| %>
   <div class="form-group">
     <%= f.label :name, class: "control-label" %>
