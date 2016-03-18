@@ -1,1 +1,5 @@
 <h1><%= @matrix.name %></h1>
+
+<%= link_to edit_matrix_path(@matrix), id: 'edit-matrix' do %>
+  Edit <%= @matrix.name %>
+<% end %>

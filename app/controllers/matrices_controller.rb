@@ -1,5 +1,5 @@
 class MatricesController < ApplicationController
-  before_action :set_matrix, only: [:show]
+  before_action :set_matrix, only: [:show, :edit, :update]
 
   def index
     @matrices = Matrix.order(created_at: :desc)
@@ -12,13 +12,24 @@ class MatricesController < ApplicationController
     @matrix = Matrix.new
   end
 
+  def edit
+  end
+
   def create
     @matrix = Matrix.new(matrix_params)
 
     if @matrix.save
-      redirect_to @matrix, notice: 'Matrix was successfully created.'
+      redirect_to @matrix, notice: "#{@matrix.name} was successfully created."
     else
       render :new
+    end
+  end
+
+  def update
+    if @matrix.update(matrix_params)
+      redirect_to @matrix, notice: "#{@matrix.name} was successfully updated."
+    else
+      render :edit
     end
   end
 
