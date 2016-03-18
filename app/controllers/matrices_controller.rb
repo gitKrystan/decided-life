@@ -1,5 +1,5 @@
 class MatricesController < ApplicationController
-  before_action :set_matrix, only: [:show, :edit, :update]
+  before_action :set_matrix, only: [:show, :edit, :update, :destroy]
 
   def index
     @matrices = Matrix.order(created_at: :desc)
@@ -31,6 +31,12 @@ class MatricesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @matrix.destroy
+    redirect_to matrices_path,
+                notice: "#{@matrix.name} was successfully destroyed."
   end
 
   private
