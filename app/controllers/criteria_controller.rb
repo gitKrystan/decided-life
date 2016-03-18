@@ -1,6 +1,6 @@
 class CriteriaController < ApplicationController
-  before_action :set_matrix, only: [:new, :create, :edit, :update]
-  before_action :set_criterium, only: [:edit, :update]
+  before_action :set_matrix, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_criterium, only: [:edit, :update, :destroy]
 
   def new
     @criterium = @matrix.criteria.new
@@ -27,6 +27,12 @@ class CriteriaController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @criterium.destroy
+    redirect_to @matrix,
+                notice: "#{@criterium.name} was successfully destroyed."
   end
 
   private
