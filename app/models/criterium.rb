@@ -5,4 +5,6 @@ class Criterium < ActiveRecord::Base
   # build_matrix(attributes = {})
   # create_matrix(attributes = {})
   # create_matrix!(attributes = {})
+
+  validates :name, presence: true
 end
