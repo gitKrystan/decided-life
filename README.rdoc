@@ -1,28 +1,35 @@
-== README
+# Decidedly
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##### By Krystan Menne
 
-Things you may want to cover:
+Decidedly is an app that helps users make decisions using a [decision matrix](https://en.wikipedia.org/wiki/Decision_matrix).
+Users create a matrix then options and decision criteria. The user weights the decision criteria based on their priorities, then assigns scores to each option based on these criteria.
+The matrix weights each score based on the criteria, then outputs a total weighted score for each option.
 
-* Ruby version
+## Prerequisites
+* Ruby 2.2.2 or greater
 
-* System dependencies
+* Rails 4.2.6 or greater
 
-* Configuration
+* PostgreSQL
 
-* Database creation
+## Installation
+1. `$ git clone https://github.com/gitKrystan/decidedly`
+1. Change into the new directory
+1. `$ bundle install`
+1. Create database and run migrations
+  1. `$ rake db:create`
+  1. `$ rake db:migrate`
+  1. `$ rake db:test:prepare`
+1. Run the tests (see below)
 
-* Database initialization
+## Running / Development
+1. `$ rails serve`
+1. Visit your app at [http://localhost:3000](http://localhost:3000).
 
-* How to run the test suite
+## Running Tests
+`$ rspec`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## License
+Copyright (c) 2016 Krystan Menne
+This software is licensed under the MIT license.
