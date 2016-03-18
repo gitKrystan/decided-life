@@ -1,5 +1,5 @@
 class Matrix < ActiveRecord::Base
-  has_many :criteria
+  has_many :criteria, dependent: :destroy
   # criteria(force_reload = false)
   # criteria<<(object, ...)
   # criteria.delete(object, ...)
@@ -17,7 +17,7 @@ class Matrix < ActiveRecord::Base
   # criteria.create(attributes = {})
   # criteria.create!(attributes = {})
 
-  has_many :options
+  has_many :options, dependent: :destroy
   # options(force_reload = false)
   # options<<(object, ...)
   # options.delete(object, ...)
