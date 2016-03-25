@@ -1,13 +1,15 @@
 @charset 'UTF-8';
 
 // 1. Configuration and helpers
-// @import 'abstracts/variables';
+@import 'abstracts/variables';
 // @import 'abstracts/functions';
 // @import 'abstracts/mixins';
 
 // 2. Vendors
+@import 'bootswatch-variables';
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'bootswatch';
 
 // 3. Base stuff
 // @import 'base/base';
