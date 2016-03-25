@@ -37,15 +37,15 @@ class CriteriaController < ApplicationController
 
   private
 
+  def criterium_params
+    params.require(:criterium).permit(:name, :weight)
+  end
+
   def set_matrix
     @matrix = Matrix.find(params[:matrix_id])
   end
 
   def set_criterium
     @criterium = Criterium.find(params[:id])
-  end
-
-  def criterium_params
-    params.require(:criterium).permit(:name)
   end
 end
