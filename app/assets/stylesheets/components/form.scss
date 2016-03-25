@@ -1,0 +1,24 @@
+// scss-lint:disable PlaceholderInExtend
+input {
+  &[type=email],
+  &[type=password] {
+    @extend .form-control;
+  }
+
+  &[type=button] {
+    @extend .btn, .btn-default;
+  }
+
+  &[type=submit] {
+    @extend .btn, .btn-success;
+  }
+}
+
+label {
+  @extend .control-label;
+}
+
+select {
+  @extend .form-control;
+}
+// scss-lint:enable PlaceholderInExtend
