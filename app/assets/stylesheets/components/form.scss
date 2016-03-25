@@ -1,8 +1,36 @@
 // scss-lint:disable PlaceholderInExtend
+// LAYOUT
 form {
   @extend .form-horizontal;
 }
 
+label {
+  @extend .control-label;
+  @include make-lg-column(3);
+}
+
+// scss-lint:disable SelectorFormat
+.new_user,
+.edit_user {
+  @extend .well;
+  @include make-sm-column(6);
+}
+// scss-lint:enable SelectorFormat
+
+.dec-input-wrapper {
+  @include make-lg-column(9);
+}
+
+.dec-input-wrapper-without-label {
+  @extend .col-lg-offset-3;
+}
+
+.action {
+  @extend .col-lg-offset-3;
+  @include make-lg-column(9);
+}
+
+// FORM-GROUPS AND CONTROLS
 input {
   &[type=email],
   &[type=password],
@@ -19,20 +47,18 @@ input {
   }
 }
 
-label {
-  @extend .control-label;
-  @include make-lg-column(3);
-}
-
 select {
   @extend .form-control;
 }
+
+.action,
+.field {
+  @extend .form-group;
+}
+
+// FORM BUTTONS
+button.dec-options-buttons {
+  @extend .btn, .btn-sm, .btn-primary;
+  margin-left: 15px;
+}
 // scss-lint:enable PlaceholderInExtend
-
-.dec-input-wrapper {
-  @include make-lg-column(9);
-}
-
-.new_user {
-  @include make-sm-column(6);
-}
