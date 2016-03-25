@@ -1,7 +1,8 @@
 // scss-lint:disable PlaceholderInExtend
 input {
   &[type=email],
-  &[type=password] {
+  &[type=password],
+  &[type=text] {
     @extend .form-control;
   }
 
