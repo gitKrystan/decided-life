@@ -9,3 +9,45 @@
             class: 'btn btn-small btn-danger' do %>
   Delete <%= @matrix.name %>
 <% end %>
+
+<% if @criteria.any? %>
+  <h2>Your Criteria</h2>
+  <ul>
+    <% @criteria.each do |criterium| %>
+    <li>
+      <%= criterium.name %> | Weight: <%= criterium.weight %> |
+      <%= link_to 'Edit',
+                  edit_matrix_criterium_path(@matrix, criterium),
+                  id: "edit-criterium-#{criterium.id}",
+                  class: 'btn btn-small btn-warning' %> |
+      <%= link_to 'Delete',
+                  matrix_criterium_path(@matrix, criterium),
+                  data: { confirm: 'You sure?',
+                          method: 'delete'},
+                  id: "delete-criterium-#{criterium.id}",
+                  class: 'btn btn-small btn-danger' %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @options.any? %>
+  <h2>Your Options</h2>
+  <ul>
+    <% @options.each do |option| %>
+    <li>
+      <%= option.name %> |
+      <%= link_to 'Edit',
+                  edit_matrix_option_path(@matrix, option),
+                  id: "edit-option-#{option.id}",
+                  class: 'btn btn-small btn-warning' %> |
+      <%= link_to 'Delete',
+                  matrix_option_path(@matrix, option),
+                  data: { confirm: 'You sure?',
+                          method: 'delete'},
+                  id: "delete-option-#{option.id}",
+                  class: 'btn btn-small btn-danger' %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

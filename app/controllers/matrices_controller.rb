@@ -1,13 +1,13 @@
 class MatricesController < ApplicationController
   before_action :set_matrix, only: [:show, :edit, :update, :destroy]
+  before_action :set_criteria, only: [:show, :edit, :update]
+  before_action :set_options, only: [:show, :edit, :update]
 
   def index
     @matrices = Matrix.order(created_at: :desc)
   end
 
   def show
-    @criteria = @matrix.criteria.order(:name) # TODO: order by user sequence
-    @options = @matrix.options.order(:name) # TODO: order by user sequence
   end
 
   def new
@@ -43,11 +43,19 @@ class MatricesController < ApplicationController
 
   private
 
+  def matrix_params
+    params.require(:matrix).permit(:name)
+  end
+
   def set_matrix
     @matrix = Matrix.find(params[:id])
   end
 
-  def matrix_params
-    params.require(:matrix).permit(:name)
+  def set_criteria
+    @criteria = @matrix.criteria.order(:name) # TODO: order by user sequence
+  end
+
+  def set_options
+    @options = @matrix.options.order(:name) # TODO: order by user sequence
   end
 end

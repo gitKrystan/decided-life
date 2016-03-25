@@ -5,7 +5,7 @@ feature 'Editing an Option:' do
   given!(:test_option) { create :option, matrix: test_matrix }
 
   scenario 'Edits an Option when all validated fields are entered' do
-    visit matrix_path(test_matrix)
+    visit edit_matrix_path(test_matrix)
     click_on "edit-option-#{test_option.id}"
     fill_in 'Name', with: 'Updated Option Name'
     click_button 'save-option'
