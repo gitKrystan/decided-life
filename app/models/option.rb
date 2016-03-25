@@ -5,6 +5,7 @@ class Option < ActiveRecord::Base
   # build_matrix(attributes = {})
   # create_matrix(attributes = {})
   # create_matrix!(attributes = {})
+  validates :matrix, presence: true
 
   validates :name, presence: true
 end
