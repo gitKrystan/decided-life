@@ -3,9 +3,12 @@
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
+  <legend>We can send them to you here:</legend>
   <div class="field">
     <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true %>
+    <div class="dec-input-wrapper">
+      <%= f.email_field :email, autofocus: true %>
+    </div>
   </div>
 
   <div class="actions">

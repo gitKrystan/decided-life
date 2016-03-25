@@ -1,6 +1,7 @@
-<% header 'Log in' %>
+<% header 'Welcome back!' %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <legend>Log in</legend>
   <div class="field">
     <%= f.label :email %>
     <div class="dec-input-wrapper">

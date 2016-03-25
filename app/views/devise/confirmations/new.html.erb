@@ -1,8 +1,9 @@
-<% header 'Resend confirmation instructions' %>
+<% header 'Account Confirmation' %>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
+  <legend>Resend confirmation instructions</legend>
   <div class="field">
     <%= f.label :email %>
     <div class="dec-input-wrapper">
