@@ -1,4 +1,7 @@
 <% header "Edit Account" %>
+<ul class="nav nav-pills">
+  <li><%= link_to "Back", :back %></li>
+</ul>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -25,7 +28,7 @@
   <legend>Edit Password</legend>
   <div class="field">
     <div class="dec-input-wrapper-without-label">
-      <button class="dec-options-buttons" role="button" data-toggle="collapse" href="#changePasswordFields" aria-expanded="false" aria-controls="changePasswordFields">
+      <button class="dec-btn-options" role="button" data-toggle="collapse" href="#changePasswordFields" aria-expanded="false" aria-controls="changePasswordFields">
         Change Password
       </button>
     </div>
@@ -65,8 +68,11 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<div class="user-form-additional-options">
+  <legend>Cancel my account</legend>
+  <%= button_to "Cancel my account",
+  registration_path(resource_name),
+  data: { confirm: "Are you sure?" },
+  method: :delete,
+  class: 'dec-btn-delete' %>
+</div>
