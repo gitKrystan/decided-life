@@ -32,7 +32,7 @@ class CriteriaController < ApplicationController
   def destroy
     @criterium.destroy
     redirect_to @matrix,
-                notice: "#{@criterium.name} was successfully destroyed."
+                notice: "#{@criterium.name} was successfully deleted."
   end
 
   private

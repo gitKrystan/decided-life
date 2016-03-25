@@ -38,7 +38,7 @@ class MatricesController < ApplicationController
   def destroy
     @matrix.destroy
     redirect_to matrices_path,
-                notice: "#{@matrix.name} was successfully destroyed."
+                notice: "#{@matrix.name} was successfully deleted."
   end
 
   private

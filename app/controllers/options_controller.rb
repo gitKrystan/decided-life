@@ -32,7 +32,7 @@ class OptionsController < ApplicationController
   def destroy
     @option.destroy
     redirect_to @matrix,
-                notice: "#{@option.name} was successfully destroyed."
+                notice: "#{@option.name} was successfully deleted."
   end
 
   private

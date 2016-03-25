@@ -6,6 +6,6 @@ feature 'Destroying a Matrix:' do
   scenario 'Destroys a matrix' do
     visit edit_matrix_path(test_matrix)
     click_link 'delete-matrix'
-    expect(page).to have_content('successfully destroyed')
+    expect(page).to have_content('successfully deleted')
   end
 end
