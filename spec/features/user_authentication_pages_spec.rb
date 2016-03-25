@@ -5,6 +5,6 @@ describe 'the user authentication path' do
     user = create(:confirmed_user)
     login_as(user)
     visit root_path
-    expect(page).to have_content('Edit Profile')
+    expect(page).to have_content(user.name)
   end
 end
