@@ -1,4 +1,8 @@
 // scss-lint:disable PlaceholderInExtend
+form {
+  @extend .form-horizontal;
+}
+
 input {
   &[type=email],
   &[type=password],
@@ -17,9 +21,18 @@ input {
 
 label {
   @extend .control-label;
+  @include make-lg-column(3);
 }
 
 select {
   @extend .form-control;
 }
 // scss-lint:enable PlaceholderInExtend
+
+.dec-input-wrapper {
+  @include make-lg-column(9);
+}
+
+.new_user {
+  @include make-sm-column(6);
+}
