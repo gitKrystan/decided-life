@@ -8,4 +8,5 @@ class Option < ActiveRecord::Base
   validates :matrix, presence: true
 
   validates :name, presence: true
+  validates_uniqueness_of :name, scope: :matrix_id
 end
