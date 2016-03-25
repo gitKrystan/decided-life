@@ -33,6 +33,9 @@ gem 'turbolinks'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# User authentication
+gem 'devise'
+
 group :development, :test do
   gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to
