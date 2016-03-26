@@ -3,13 +3,8 @@ class CrudController < ApplicationController
 
   private
 
-  def user_is_matrix_owner?
-    (current_user == @matrix.owner) if user_signed_in?
-  end
-  helper_method :user_is_matrix_owner?
-
   def authenticate_matrix_owner
-    unless user_is_matrix_owner?
+    unless matrix_owner?
       flash[:notice] = 'You are not authorized to edit this matrix.'
       redirect_to @matrix
     end

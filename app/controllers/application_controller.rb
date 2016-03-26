@@ -5,10 +5,15 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protected
+  private
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:account_update) << :name
   end
+
+  def matrix_owner?
+    (current_user == @matrix.owner) if user_signed_in?
+  end
+  helper_method :matrix_owner?
 end
