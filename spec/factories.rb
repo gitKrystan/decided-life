@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user do
+  factory :user, aliases: [:owner] do
     sequence :name do |n|
       "test-user-#{n}"
     end
@@ -14,7 +14,7 @@ FactoryGirl.define do
   end
 
   factory :matrix do
-    user
+    owner
     name 'Test Matrix'
   end
 

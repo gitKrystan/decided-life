@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Destroying a Matrix:' do
   given(:test_user) { create :confirmed_user }
-  given!(:test_matrix) { create :matrix, user: test_user }
+  given!(:test_matrix) { create :matrix, owner: test_user }
 
   background do
     login_as(test_user)

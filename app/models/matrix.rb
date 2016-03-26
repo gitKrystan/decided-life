@@ -1,11 +1,11 @@
 class Matrix < ActiveRecord::Base
-  belongs_to :user
-  # user(force_reload = false)
-  # user=(associate)
-  # build_user(attributes = {})
-  # create_user(attributes = {})
-  # create_user!(attributes = {})
-  validates :user, presence: true
+  belongs_to :owner, class_name: 'User'
+  # owner(force_reload = false)
+  # owner=(associate)
+  # build_owner(attributes = {})
+  # create_owner(attributes = {})
+  # create_owner!(attributes = {})
+  validates :owner, presence: true
 
   has_many :criteria, dependent: :destroy
   # criteria(force_reload = false)

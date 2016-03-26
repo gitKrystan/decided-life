@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Updating a Criterium:' do
   given(:test_user) { create :confirmed_user }
-  given!(:test_matrix) { create :matrix, user: test_user }
+  given!(:test_matrix) { create :matrix, owner: test_user }
   given!(:test_criterium) { create :criterium, matrix: test_matrix }
 
   background do

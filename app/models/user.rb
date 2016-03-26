@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   # current_user
   # user_session
 
-  has_many :matrices, dependent: :destroy
+  has_many :matrices, dependent: :destroy, foreign_key: 'owner_id'
   # matrices(force_reload = false)
   # matrices<<(object, ...)
   # matrices.delete(object, ...)
