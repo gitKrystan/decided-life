@@ -2,6 +2,7 @@ class MatricesController < CrudController
   before_action :set_matrix, only: [:show, :edit, :update, :destroy]
   before_action :set_criteria, only: [:show, :edit, :update]
   before_action :set_options, only: [:show, :edit, :update]
+  before_action :authenticate_matrix_owner, only: [:edit, :update, :destroy]
 
   def index
     @matrices = Matrix.order(created_at: :desc)
