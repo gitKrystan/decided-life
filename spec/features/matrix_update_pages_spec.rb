@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 feature 'Editing a Matrix:' do
+  given(:test_user) { create :confirmed_user }
   given!(:test_matrix) { create :matrix }
+
+  background do
+    login_as(test_user)
+  end
 
   scenario 'Edits a Matrix when all validated fields are entered' do
     visit matrix_path(test_matrix)

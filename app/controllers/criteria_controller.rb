@@ -1,4 +1,4 @@
-class CriteriaController < ApplicationController
+class CriteriaController < CrudController
   before_action :set_matrix, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_criterium, only: [:edit, :update, :destroy]
 

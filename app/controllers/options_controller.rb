@@ -1,4 +1,4 @@
-class OptionsController < ApplicationController
+class OptionsController < CrudController
   before_action :set_matrix, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_option, only: [:edit, :update, :destroy]
 

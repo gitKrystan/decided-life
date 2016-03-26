@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 feature 'Updating a Criterium:' do
+  given(:test_user) { create :confirmed_user }
   given!(:test_matrix) { create :matrix }
   given!(:test_criterium) { create :criterium, matrix: test_matrix }
+
+  background do
+    login_as(test_user)
+  end
 
   scenario 'Updates a Criterium when all validated fields are entered' do
     visit edit_matrix_path(test_matrix)

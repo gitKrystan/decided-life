@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 feature 'Creating a new Matrix:' do
+  given(:test_user) { create :confirmed_user }
+
+  background do
+    login_as(test_user)
+  end
+
   scenario 'Adds a new Matrix when all validated fields are entered' do
     visit matrices_path
     click_on 'new-matrix'
