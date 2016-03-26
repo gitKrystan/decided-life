@@ -1,4 +1,12 @@
 class Matrix < ActiveRecord::Base
+  belongs_to :user
+  # user(force_reload = false)
+  # user=(associate)
+  # build_user(attributes = {})
+  # create_user(attributes = {})
+  # create_user!(attributes = {})
+  validates :user, presence: true
+
   has_many :criteria, dependent: :destroy
   # criteria(force_reload = false)
   # criteria<<(object, ...)

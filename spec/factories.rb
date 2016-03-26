@@ -14,6 +14,7 @@ FactoryGirl.define do
   end
 
   factory :matrix do
+    user
     name 'Test Matrix'
   end
 

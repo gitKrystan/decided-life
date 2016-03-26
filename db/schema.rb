@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325184912) do
+ActiveRecord::Schema.define(version: 20160326010803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,10 @@ ActiveRecord::Schema.define(version: 20160325184912) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "matrices", ["user_id"], name: "index_matrices_on_user_id", using: :btree
 
   create_table "options", force: :cascade do |t|
     t.integer  "matrix_id"
@@ -72,5 +75,6 @@ ActiveRecord::Schema.define(version: 20160325184912) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   add_foreign_key "criteria", "matrices"
+  add_foreign_key "matrices", "users"
   add_foreign_key "options", "matrices"
 end

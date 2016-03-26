@@ -18,7 +18,7 @@ class MatricesController < CrudController
   end
 
   def create
-    @matrix = Matrix.new(matrix_params)
+    @matrix = current_user.matrices.new(matrix_params)
 
     if @matrix.save
       redirect_to @matrix, notice: "#{@matrix.name} was successfully created."
