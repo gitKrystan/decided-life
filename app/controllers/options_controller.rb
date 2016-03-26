@@ -1,5 +1,4 @@
-class OptionsController < CrudController
-  before_action :set_matrix, only: [:new, :create, :edit, :update, :destroy]
+class OptionsController < MatricesChildrenController
   before_action :set_option, only: [:edit, :update, :destroy]
 
   def new
@@ -37,15 +36,11 @@ class OptionsController < CrudController
 
   private
 
-  def set_matrix
-    @matrix = Matrix.find(params[:matrix_id])
+  def option_params
+    params.require(:option).permit(:name)
   end
 
   def set_option
     @option = Option.find(params[:id])
-  end
-
-  def option_params
-    params.require(:option).permit(:name)
   end
 end

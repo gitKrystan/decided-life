@@ -1,5 +1,4 @@
-class CriteriaController < CrudController
-  before_action :set_matrix, only: [:new, :create, :edit, :update, :destroy]
+class CriteriaController < MatricesChildrenController
   before_action :set_criterium, only: [:edit, :update, :destroy]
 
   def new
@@ -39,10 +38,6 @@ class CriteriaController < CrudController
 
   def criterium_params
     params.require(:criterium).permit(:name, :weight)
-  end
-
-  def set_matrix
-    @matrix = Matrix.find(params[:matrix_id])
   end
 
   def set_criterium
