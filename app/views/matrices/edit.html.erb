@@ -1,14 +1,8 @@
 <% header "Edit #{@matrix.name}" %>
 
-<%= render 'form' %>
-
-<%= link_to matrix_path(@matrix),
-            data: { confirm: 'You sure?',
-                    method: 'delete'},
-            id: 'delete-matrix',
-            class: 'btn btn-small btn-danger' do %>
-  Delete <%= @matrix.name %>
-<% end %>
+<div class="row">
+  <%= render 'form', edit: true %>
+</div>
 
 <% if @criteria.any? %>
   <h2>Your Criteria</h2>

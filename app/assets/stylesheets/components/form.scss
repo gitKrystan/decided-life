@@ -4,38 +4,48 @@ form {
   @extend .form-horizontal;
 }
 
-label {
-  @extend .control-label;
-  @include make-lg-column(3);
-}
-
 // scss-lint:disable SelectorFormat
 .new_user,
 .edit_user,
-.user-form-additional-options {
+.form-additional-options,
+.new_matrix,
+.edit_matrix,
+.new_criterium,
+.edit_criterium,
+.new_option,
+.edit_option {
   @extend .well;
   @include make-sm-column(6);
 }
 // scss-lint:enable SelectorFormat
 
-.user-form-additional-options {
-  background-color: $body-bg;
+.form-additional-options {
+  background-color: $body-bg; // to undo well coloring
+}
+
+.field > label {
+  @include make-lg-column(3);
 }
 
 .dec-input-wrapper {
   @include make-lg-column(9);
 }
 
-.dec-input-wrapper-without-label {
+
+.dec-input-wrapper-without-label,
+.actions {
   @extend .col-lg-offset-3;
 }
 
-.action {
-  @extend .col-lg-offset-3;
-  @include make-lg-column(9);
+.dec-input-wrapper-without-label {
+  padding-left: 15px;
 }
 
 // FORM-GROUPS AND CONTROLS
+label {
+  @extend .control-label;
+}
+
 input {
   &[type=email],
   &[type=password],

@@ -1,11 +1,22 @@
-<%= render 'layouts/errors', object: @matrix %>
-
 <%= form_for(@matrix) do |f| %>
+  <%= render 'layouts/errors', object: @matrix %>
+
   <div class="field">
     <%= f.label :name, class: "control-label" %>
-    <%= f.text_field :name, class: "form-control" %>
+    <div class="dec-input-wrapper">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
+  <div class="actions">
     <%= f.submit id: 'save-matrix', class: "btn btn-success" %>
+    <% if edit %>
+      <%= link_to matrix_path(@matrix),
+      data: { confirm: 'You sure?',
+        method: 'delete'},
+        id: 'delete-matrix',
+        class: 'btn btn-small btn-danger' do %>
+        Delete <%= @matrix.name %>
+        <% end %>
+    <% end %>
   </div>
 <% end %>
