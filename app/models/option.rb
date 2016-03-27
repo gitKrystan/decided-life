@@ -24,6 +24,7 @@ class Option < ActiveRecord::Base
   # scores.build(attributes = {}, ...)
   # scores.create(attributes = {})
   # scores.create!(attributes = {})
+  accepts_nested_attributes_for :scores
 
   has_many :criteria, through: :scores
   # criteria(force_reload = false)
