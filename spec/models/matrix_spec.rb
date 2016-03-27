@@ -5,10 +5,10 @@ RSpec.describe Matrix, type: :model do
   it { should validate_presence_of :owner }
 
   it { should have_many(:criteria).dependent :destroy }
-  it { should accept_nested_attributes_for :criteria }
+  it { should accept_nested_attributes_for(:criteria).allow_destroy(true) }
 
   it { should have_many(:options).dependent :destroy }
-  it { should accept_nested_attributes_for :options }
+  it { should accept_nested_attributes_for(:options).allow_destroy(true) }
 
   it { should validate_presence_of :name }
   it { should validate_uniqueness_of(:name).scoped_to(:owner_id) }
