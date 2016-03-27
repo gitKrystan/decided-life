@@ -1,0 +1,7 @@
+<% header "Criteria" %>
+
+<%= render layout: 'form' do |f| %>
+  <%= f.fields_for :criteria do |criterium| %>
+    <%= render 'criteria/fields', f: criterium %>
+  <% end %>
+<% end %>

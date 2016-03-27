@@ -1,0 +1,7 @@
+<% header "Options" %>
+
+<%= render layout: 'form' do |f| %>
+  <%= f.fields_for :options do |option| %>
+    <%= render 'options/fields', f: option %>
+  <% end %>
+<% end %>
