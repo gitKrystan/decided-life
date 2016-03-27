@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326013403) do
+ActiveRecord::Schema.define(version: 20160327162024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "create_scores", force: :cascade do |t|
+    t.integer  "criterium_id"
+    t.integer  "option_id"
+    t.integer  "score",        default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "create_scores", ["criterium_id"], name: "index_create_scores_on_criterium_id", using: :btree
+  add_index "create_scores", ["option_id"], name: "index_create_scores_on_option_id", using: :btree
 
   create_table "criteria", force: :cascade do |t|
     t.integer  "matrix_id"
@@ -46,6 +57,17 @@ ActiveRecord::Schema.define(version: 20160326013403) do
 
   add_index "options", ["matrix_id"], name: "index_options_on_matrix_id", using: :btree
 
+  create_table "scores", force: :cascade do |t|
+    t.integer  "criterium_id"
+    t.integer  "option_id"
+    t.integer  "score",        default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "scores", ["criterium_id"], name: "index_scores_on_criterium_id", using: :btree
+  add_index "scores", ["option_id"], name: "index_scores_on_option_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email",                  default: "", null: false
@@ -74,7 +96,11 @@ ActiveRecord::Schema.define(version: 20160326013403) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "create_scores", "criteria"
+  add_foreign_key "create_scores", "options"
   add_foreign_key "criteria", "matrices"
   add_foreign_key "matrices", "users", column: "owner_id"
   add_foreign_key "options", "matrices"
+  add_foreign_key "scores", "criteria"
+  add_foreign_key "scores", "options"
 end

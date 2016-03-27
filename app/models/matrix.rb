@@ -13,8 +13,8 @@ class Matrix < ActiveRecord::Base
   # criteria.delete(object, ...)
   # criteria.destroy(object, ...)
   # criteria=(objects)
-  # criteria_singular_ids
-  # criteria_singular_ids=(ids)
+  # criterium_ids
+  # criterium_ids=(ids)
   # criteria.clear
   # criteria.empty?
   # criteria.size
@@ -31,8 +31,8 @@ class Matrix < ActiveRecord::Base
   # options.delete(object, ...)
   # options.destroy(object, ...)
   # options=(objects)
-  # options_singular_ids
-  # options_singular_ids=(ids)
+  # option_ids
+  # option_ids=(ids)
   # options.clear
   # options.empty?
   # options.size

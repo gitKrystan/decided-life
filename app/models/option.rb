@@ -7,6 +7,41 @@ class Option < ActiveRecord::Base
   # create_matrix!(attributes = {})
   validates :matrix, presence: true
 
-  validates :name, presence: true
-  validates_uniqueness_of :name, scope: :matrix_id
+  has_many :scores
+  # scores(force_reload = false)
+  # scores<<(object, ...)
+  # scores.delete(object, ...)
+  # scores.destroy(object, ...)
+  # scores=(objects)
+  # score_ids
+  # score_ids=(ids)
+  # scores.clear
+  # scores.empty?
+  # scores.size
+  # scores.find(...)
+  # scores.where(...)
+  # scores.exists?(...)
+  # scores.build(attributes = {}, ...)
+  # scores.create(attributes = {})
+  # scores.create!(attributes = {})
+
+  has_many :criteria, through: :scores
+  # criteria(force_reload = false)
+  # criteria<<(object, ...)
+  # criteria.delete(object, ...)
+  # criteria.destroy(object, ...)
+  # criteria=(objects)
+  # criterium_ids
+  # criterium_ids=(ids)
+  # criteria.clear
+  # criteria.empty?
+  # criteria.size
+  # criteria.find(...)
+  # criteria.where(...)
+  # criteria.exists?(...)
+  # criteria.build(attributes = {}, ...)
+  # criteria.create(attributes = {})
+  # criteria.create!(attributes = {})
+
+  validates :name, presence: true, uniqueness: { scope: :matrix_id }
 end
