@@ -42,6 +42,7 @@ class Matrix < ActiveRecord::Base
   # options.build(attributes = {}, ...)
   # options.create(attributes = {})
   # options.create!(attributes = {})
+  accepts_nested_attributes_for :options
 
   validates :name, presence: true, uniqueness: { scope: :owner_id }
 end
