@@ -28,9 +28,10 @@ class MatrixStepsController < MatricesChildrenController
   private
 
   def matrix_params
-    params.require(:matrix).permit(:name,
-                                   criteria_attributes: [:id, :name, :weight],
-                                   options_attributes: [:id, :name])
+    params.require(:matrix)
+          .permit(:name,
+                  criteria_attributes: [:id, :name, :weight, :_destroy],
+                  options_attributes: [:id, :name, :_destroy])
   end
 
   def finish_wizard_path
