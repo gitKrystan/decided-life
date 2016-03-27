@@ -24,6 +24,7 @@ class Matrix < ActiveRecord::Base
   # criteria.build(attributes = {}, ...)
   # criteria.create(attributes = {})
   # criteria.create!(attributes = {})
+  accepts_nested_attributes_for :criteria
 
   has_many :options, dependent: :destroy
   # options(force_reload = false)

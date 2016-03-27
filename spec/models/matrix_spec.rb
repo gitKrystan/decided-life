@@ -5,6 +5,7 @@ RSpec.describe Matrix, type: :model do
   it { should validate_presence_of :owner }
 
   it { should have_many(:criteria).dependent :destroy }
+  it { should accept_nested_attributes_for :criteria }
 
   it { should have_many(:options).dependent :destroy }
   it { should accept_nested_attributes_for :options }
