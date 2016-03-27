@@ -43,5 +43,5 @@ class Matrix < ActiveRecord::Base
   # options.create(attributes = {})
   # options.create!(attributes = {})
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { scope: :owner_id }
 end
