@@ -1,6 +1,6 @@
 <%= form_for @matrix, url: wizard_path do |f| %>
   <%= render 'layouts/errors', object: @matrix %>
-  
+
   <%= yield f %>
 
   <div class="actions">
