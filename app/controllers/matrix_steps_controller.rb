@@ -15,13 +15,14 @@ class MatrixStepsController < MatricesChildrenController
   end
 
   def update
-    case step
-    when :criteria
-      flash[:notice] = 'Your criteria have been updated.'
-    when :options
-      flash[:notice] = 'Your options have been updated.'
+    if @matrix.update(matrix_params)
+      case step
+      when :criteria
+        flash[:notice] = 'Your criteria have been updated.'
+      when :options
+        flash[:notice] = 'Your options have been updated.'
+      end
     end
-    @matrix.update(matrix_params)
     render_wizard @matrix
   end
 
