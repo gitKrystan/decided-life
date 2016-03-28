@@ -1,0 +1,12 @@
+<% header "Criteria" %>
+
+<%= render layout: 'form' do |f| %>
+  <div id="criteria">
+    <%= f.fields_for :criteria do |criterium| %>
+    <%= render 'criterium_fields', f: criterium %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add criterium', f, :criteria %>
+    </div>
+  </div>
+<% end %>

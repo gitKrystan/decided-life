@@ -37,6 +37,11 @@ gem 'jquery-turbolinks'
 # User authentication
 gem 'devise'
 
+# Step-by-step wizard forms
+gem 'wicked'
+# Nested forms
+gem 'cocoon'
+
 group :development, :test do
   gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to

@@ -22,7 +22,8 @@ class MatricesController < CrudController
     @matrix = current_user.matrices.new(matrix_params)
 
     if @matrix.save
-      redirect_to @matrix, notice: "#{@matrix.name} was successfully created."
+      flash[:notice] = "#{@matrix.name} was successfully created."
+      redirect_to matrix_steps_path(@matrix)
     else
       render :new
     end

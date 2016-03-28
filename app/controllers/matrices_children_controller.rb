@@ -1,7 +1,7 @@
 class MatricesChildrenController < CrudController
-  before_action :set_matrix, only: [:new, :create, :edit, :update, :destroy]
-  before_action :authenticate_matrix_owner,
-                only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_matrix,
+                :authenticate_matrix_owner,
+                only: [:show, :new, :create, :edit, :update, :destroy]
 
   private
 

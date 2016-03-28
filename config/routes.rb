@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'matrices#index'
+
   resources :matrices do
+    resources :matrix_steps, as: 'steps'
     resources :criteria, except: [:show, :index]
     resources :options, except: [:show, :index]
   end
