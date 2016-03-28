@@ -11,7 +11,7 @@ module CoreExtensions
 
           # return false if any values have been changed from default
           each do |key, value|
-            next unless association_class.column_names.include? key
+            next unless association_class.column_names.include? key.to_s
             clean_value = clean_attribute(value)
             return false if clean_value != default_attributes[key]
           end
@@ -20,7 +20,7 @@ module CoreExtensions
         end
 
         def clean_attribute(attribute)
-          if attribute == ''
+          if attribute == '' || attribute.nil?
             attribute = nil
           elsif attribute.numeric?
             attribute = attribute.to_f
