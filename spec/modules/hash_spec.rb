@@ -8,7 +8,7 @@ describe Hash do
     end
 
     it 'returns true if the attributes match the default attributes' do
-      test_attributes = { weight: '100' }
+      test_attributes = { name: '', weight: '100' }
       expect(test_attributes.clean_or_empty?(:criterium)).to be true
     end
   end
