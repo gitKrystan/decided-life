@@ -28,7 +28,9 @@ class Matrix < ActiveRecord::Base
   # criteria.create!(attributes = {})
   accepts_nested_attributes_for :criteria,
                                 allow_destroy: true,
-                                reject_if: proc { |attributes| attributes.clean_or_empty?(:criterium) }
+                                reject_if: proc { |attributes|
+                                  attributes.clean_or_empty?(:criterium)
+                                }
 
   has_many :options, dependent: :destroy
   # options(force_reload = false)
