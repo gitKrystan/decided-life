@@ -5,10 +5,10 @@ class MatrixStepsController < MatricesChildrenController
   def show
     case step
     when :criteria
-      1.times { @matrix.criteria.build }
+      3.times { @matrix.criteria.build }
       @criteria = @matrix.criteria
     when :options
-      1.times { @matrix.options.build }
+      3.times { @matrix.options.build }
       @options = @matrix.options
     end
     render_wizard
