@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'matrices#index'
 
   resources :matrices do
-    resources :matrix_steps, as: 'steps'
+    resources :matrix_steps, as: 'steps', only: [:index, :show, :update]
     resources :criteria, except: [:show, :index]
     resources :options, except: [:show, :index]
   end
