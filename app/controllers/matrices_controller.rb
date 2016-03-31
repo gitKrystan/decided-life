@@ -9,6 +9,7 @@ class MatricesController < CrudController
   end
 
   def show
+    @options_count = @matrix.options.count
   end
 
   def new

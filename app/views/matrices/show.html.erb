@@ -1,40 +1,43 @@
 <% header @matrix.name %>
 
 <% if matrix_owner? %>
-  <%= link_to new_matrix_criterium_path(@matrix), id: 'new-criterium',
-                                         class: 'btn btn-small btn-primary' do %>
-    Add Criterium
-  <% end %>
-
-  <%= link_to new_matrix_option_path(@matrix), id: 'new-option',
-                                         class: 'btn btn-small btn-primary' do %>
-    Add Option
-  <% end %>
-
   <%= link_to edit_matrix_path(@matrix), id: 'edit-matrix',
                                          class: 'btn btn-small btn-warning' do %>
     Edit <%= @matrix.name %>
   <% end %>
 <% end %>
 
-<% if @criteria.any? %>
-  <h2>Your Criteria</h2>
-  <ul>
-    <% @criteria.each do |criterium| %>
-    <li>
-      <%= criterium.name %>
-    </li>
-    <% end %>
-  </ul>
-<% end %>
-
-<% if @options.any? %>
-  <h2>Your Options</h2>
-  <ul>
-    <% @options.each do |option| %>
-    <li>
-      <%= option.name %>
-    </li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th colspan="2">Criteria</th>
+        <th colspan="<%= @options_count + 1 %>">Options</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>Weight</th>
+        <%= render @options %>
+        <th colspan="4">
+          <%= link_to new_matrix_option_path(@matrix),
+                      id: 'new-option',
+                      class: 'btn btn-small btn-primary' do %>
+            Add Option
+          <% end %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @criteria %>
+      <tr>
+        <td colspan="<%= @options_count + 3 %>">
+          <%= link_to new_matrix_criterium_path(@matrix),
+                      id: 'new-criterium',
+                      class: 'btn btn-small btn-primary' do %>
+            Add Criterium
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
