@@ -12,7 +12,7 @@ class CriteriaController < MatricesChildrenController
     @criterium = @matrix.criteria.new(criterium_params)
 
     if @criterium.save
-      redirect_to @matrix,
+      redirect_to edit_matrix_path(@matrix),
                   notice: "#{@criterium.name} was successfully created."
     else
       render :new
@@ -21,7 +21,7 @@ class CriteriaController < MatricesChildrenController
 
   def update
     if @criterium.update(criterium_params)
-      redirect_to @matrix,
+      redirect_to edit_matrix_path(@matrix),
                   notice: "#{@criterium.name} was successfully updated."
     else
       render :edit
@@ -30,7 +30,7 @@ class CriteriaController < MatricesChildrenController
 
   def destroy
     @criterium.destroy
-    redirect_to @matrix,
+    redirect_to edit_matrix_path(@matrix),
                 notice: "#{@criterium.name} was successfully deleted."
   end
 

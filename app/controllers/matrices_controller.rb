@@ -31,8 +31,17 @@ class MatricesController < CrudController
 
   def update
     if @matrix.update(matrix_params)
-      redirect_to edit_matrix_path(@matrix),
-                  notice: "#{@matrix.name} was successfully updated."
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "#{@matrix.name} was successfully updated."
+          redirect_to edit_matrix_path(@matrix)
+        end
+        format.js do
+          @option_id = matrix_params[:options_attributes]['0'][:id].to_i
+          @criterium_id = matrix_params[:options_attributes]['0'][:scores_attributes]['0'][:criterium_id].to_i
+          @amount = matrix_params[:options_attributes]['0'][:scores_attributes]['0'][:amount].to_i
+        end
+      end
     else
       render :edit
     end

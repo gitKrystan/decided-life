@@ -13,6 +13,16 @@ feature 'Scoring a Matrix:' do
   end
 
   scenario 'Adds a score to a criterium/option combination', js: true do
+    input_field = "score_amount_#{test_criterium.id}_#{test_option.id}"
+    visit edit_matrix_path(test_matrix)
+    fill_in input_field, with: '42'
+    page.find('body').click
+    expect(page).to have_field(input_field, with: '42')
+    click_link('Presentation mode')
+    expect(page).to have_content('42')
+  end
+
+  scenario 'Adds a score to a criterium/option combination without js' do
     visit edit_matrix_path(test_matrix)
     fill_in "score_amount_#{test_criterium.id}_#{test_option.id}", with: '42'
     click_button "save_score_#{test_criterium.id}_#{test_option.id}"
@@ -23,13 +33,6 @@ feature 'Scoring a Matrix:' do
     test_score = create :score, criterium: test_criterium, option: test_option
     visit edit_matrix_path(test_matrix)
     expect(page).to have_selector("input[value='#{test_score.amount}']")
-    fill_in "score_amount_#{test_criterium.id}_#{test_option.id}", with: '42'
-    click_button "save_score_#{test_criterium.id}_#{test_option.id}"
-    expect(page).to have_selector("input[value='42']")
-  end
-
-  scenario 'Adds a score to a criterium/option combination without js' do
-    visit edit_matrix_path(test_matrix)
     fill_in "score_amount_#{test_criterium.id}_#{test_option.id}", with: '42'
     click_button "save_score_#{test_criterium.id}_#{test_option.id}"
     expect(page).to have_selector("input[value='42']")
