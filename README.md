@@ -8,10 +8,9 @@ The matrix weights each score based on the criteria, then outputs a total weight
 
 ## Prerequisites
 * Ruby 2.2.2 or greater
-
 * Rails 4.2.6 or greater
-
 * PostgreSQL
+* PhantomJS
 
 ## Installation
 1. `$ git clone https://github.com/gitKrystan/decidedly`

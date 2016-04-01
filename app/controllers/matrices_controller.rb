@@ -31,7 +31,8 @@ class MatricesController < CrudController
 
   def update
     if @matrix.update(matrix_params)
-      redirect_to @matrix, notice: "#{@matrix.name} was successfully updated."
+      redirect_to edit_matrix_path(@matrix),
+                  notice: "#{@matrix.name} was successfully updated."
     else
       render :edit
     end
@@ -46,7 +47,9 @@ class MatricesController < CrudController
   private
 
   def matrix_params
-    params.require(:matrix).permit(:name)
+    score_attributes = [:id, :amount, :criterium_id, :option_id]
+    option_attributes = [:id, :name, scores_attributes: score_attributes]
+    params.require(:matrix).permit(:name, options_attributes: option_attributes)
   end
 
   def set_matrix
@@ -60,4 +63,9 @@ class MatricesController < CrudController
   def set_options
     @options = @matrix.options.order(:name) # TODO: order by user sequence
   end
+
+  def criteria_count
+    @matrix.criteria.count
+  end
+  helper_method :criteria_count
 end

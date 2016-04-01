@@ -5,23 +5,21 @@ class MatrixStepsController < MatricesChildrenController
   def show
     case step
     when :criteria
-      1.times { @matrix.criteria.build }
+      3.times { @matrix.criteria.build }
       @criteria = @matrix.criteria
     when :options
-      1.times { @matrix.options.build }
+      3.times { @matrix.options.build }
       @options = @matrix.options
     end
     render_wizard
   end
 
   def update
-    if @matrix.update(matrix_params)
-      case step
-      when :criteria
-        flash[:notice] = 'Your criteria have been updated.'
-      when :options
-        flash[:notice] = 'Your options have been updated.'
-      end
+    case step
+    when :criteria
+      update_association_and_set_notice(:criteria)
+    when :options
+      update_association_and_set_notice(:options)
     end
     render_wizard @matrix
   end
@@ -37,5 +35,22 @@ class MatrixStepsController < MatricesChildrenController
 
   def finish_wizard_path
     @matrix
+  end
+
+  def update_association_and_set_notice(association_symbol)
+    association = association_symbol.to_s
+    association_count_before = @matrix.send(association).count
+    if @matrix.update(matrix_params)
+      set_notice(association, association_count_before)
+    end
+  end
+
+  def set_notice(association, association_count_before)
+    if @matrix.send(association).count > association_count_before
+      flash[:notice] = "Your #{association} have been updated."
+    else
+      flash[:notice] = "No #{association} have been added. " \
+               "Dont worry, you can add #{association} later."
+    end
   end
 end
