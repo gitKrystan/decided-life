@@ -1,5 +1,4 @@
 class Score < ActiveRecord::Base
-  belongs_to :matrix
   belongs_to :criterium
   # criterium(force_reload = false)
   # criterium=(associate)

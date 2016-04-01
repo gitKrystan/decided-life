@@ -53,8 +53,5 @@ class Matrix < ActiveRecord::Base
                                 allow_destroy: true,
                                 reject_if: :all_blank
 
-  has_many :scores, through: :options
-  accepts_nested_attributes_for :scores
-
   validates :name, presence: true, uniqueness: { scope: :owner_id }
 end
