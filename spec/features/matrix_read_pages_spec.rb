@@ -9,7 +9,7 @@ feature 'Viewing a Matrix:' do
     visit root_path
     click_link test_matrix.name
     expect(page).to have_content(test_matrix.name)
-    expect(page).to have_content('Log in to edit')
+    expect(page).to have_content('Read only')
     expect(current_path).to eq matrix_path(test_matrix)
   end
 
@@ -18,7 +18,7 @@ feature 'Viewing a Matrix:' do
     visit root_path
     click_link test_matrix.name
     expect(page).to have_content(test_matrix.name)
-    expect(page).to have_content('Log in to edit')
+    expect(page).to have_content('Read only')
     expect(current_path).to eq matrix_path(test_matrix)
   end
 
