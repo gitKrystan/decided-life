@@ -24,6 +24,7 @@ class Option < ActiveRecord::Base
   # scores.build(attributes = {}, ...)
   # scores.create(attributes = {})
   # scores.create!(attributes = {})
+  accepts_nested_attributes_for :scores
 
   has_many :criteria, through: :scores
   # criteria(force_reload = false)
@@ -44,4 +45,12 @@ class Option < ActiveRecord::Base
   # criteria.create!(attributes = {})
 
   validates :name, presence: true, uniqueness: { scope: :matrix_id }
+
+  def criterium_score(criterium)
+    if scores.find_by(criterium: criterium)
+      scores.find_by(criterium: criterium).amount
+    else
+      0
+    end
+  end
 end

@@ -15,16 +15,28 @@ FactoryGirl.define do
 
   factory :matrix do
     owner
-    name 'Test Matrix'
+    sequence :name do |n|
+      "Test Matrix #{n}"
+    end
   end
 
   factory :criterium do
     matrix
-    name 'Test Criterium'
+    sequence :name do |n|
+      "Test Criterium #{n}"
+    end
   end
 
   factory :option do
     matrix
-    name 'Test Option'
+    sequence :name do |n|
+      "Test Option #{n}"
+    end
+  end
+
+  factory :score do
+    amount 150
+    criterium
+    option
   end
 end

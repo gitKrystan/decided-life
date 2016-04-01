@@ -1,0 +1,31 @@
+<tr>
+  <td><%= option.name %>
+    <% if view == 'edit' %>
+      <div>
+        <%= link_to 'Edit',
+                    edit_matrix_option_path(@matrix, option),
+                    id: "edit-option-#{option.id}",
+                    class: 'btn btn-xs btn-warning' %>
+        <%= link_to 'Delete',
+                    matrix_option_path(@matrix, option),
+                    data: { confirm: 'You sure?',
+                            method: 'delete'},
+                    id: "delete-option-#{option.id}",
+                    class: 'btn btn-xs btn-danger' %>
+      </div>
+    <% end %>
+  </td>
+  <% @criteria.each do |criterium| %>
+    <td>
+      <% if view == 'edit' %>
+        <%= render 'scores/form', criterium: criterium, option: option %>
+      <% else %>
+        <%= option.criterium_score(criterium) %>
+      <% end %>
+    </td>
+  <% end %>
+
+  <% if view == 'edit' %>
+    <td></td>
+  <% end %>
+</tr>

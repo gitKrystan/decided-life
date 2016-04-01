@@ -12,8 +12,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :name
   end
 
-  def matrix_owner?
-    (current_user == @matrix.owner) if user_signed_in?
+  def matrix_owner?(matrix)
+    (current_user == matrix.owner) if user_signed_in?
   end
   helper_method :matrix_owner?
+
+  def current_matrix_owner?
+    matrix_owner?(@matrix)
+  end
+  helper_method :current_matrix_owner?
 end

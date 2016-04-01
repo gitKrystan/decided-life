@@ -38,6 +38,11 @@ gem 'jquery-turbolinks'
 # User authentication
 gem 'devise'
 
+# Step-by-step wizard forms
+gem 'wicked'
+# Nested forms
+gem 'cocoon'
+
 group :development, :test do
   gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to
@@ -61,9 +66,11 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'capybara'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'simplecov', require: false
   gem 'launchy'
+  gem 'poltergeist'
 end

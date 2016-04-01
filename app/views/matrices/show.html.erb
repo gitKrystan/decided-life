@@ -1,40 +1,14 @@
 <% header @matrix.name %>
 
-<% if matrix_owner? %>
-  <%= link_to new_matrix_criterium_path(@matrix), id: 'new-criterium',
-                                         class: 'btn btn-small btn-primary' do %>
-    Add Criterium
-  <% end %>
-
-  <%= link_to new_matrix_option_path(@matrix), id: 'new-option',
-                                         class: 'btn btn-small btn-primary' do %>
-    Add Option
-  <% end %>
-
+<% if current_matrix_owner? %>
   <%= link_to edit_matrix_path(@matrix), id: 'edit-matrix',
                                          class: 'btn btn-small btn-warning' do %>
     Edit <%= @matrix.name %>
   <% end %>
+<% else %>
+  <p>
+    Read only. Log in as the matrix owner to edit.
+  </p>
 <% end %>
 
-<% if @criteria.any? %>
-  <h2>Your Criteria</h2>
-  <ul>
-    <% @criteria.each do |criterium| %>
-    <li>
-      <%= criterium.name %>
-    </li>
-    <% end %>
-  </ul>
-<% end %>
-
-<% if @options.any? %>
-  <h2>Your Options</h2>
-  <ul>
-    <% @options.each do |option| %>
-    <li>
-      <%= option.name %>
-    </li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'matrix', view: 'show' %>

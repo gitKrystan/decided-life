@@ -9,7 +9,7 @@ feature 'Adding Criteria to a Matrix:' do
   end
 
   scenario 'Adds new criteria when all validated fields are entered' do
-    visit matrix_path(test_matrix)
+    visit edit_matrix_path(test_matrix)
     click_on 'new-criterium'
     fill_in 'Name', with: 'Test Criterium'
     click_button 'save-criterium'

@@ -1,0 +1,12 @@
+<% header "Add Options" %>
+
+<%= render layout: 'form' do |f| %>
+  <div id="options">
+    <%= f.fields_for :options do |option| %>
+    <%= render 'option_fields', f: option %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add option', f, :options %>
+    </div>
+  </div>
+<% end %>

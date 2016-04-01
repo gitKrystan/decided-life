@@ -1,3 +1,5 @@
+Hash.include CoreExtensions::Hash::Attributes::CleanOrEmpty
+
 class Matrix < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   # owner(force_reload = false)
@@ -24,6 +26,11 @@ class Matrix < ActiveRecord::Base
   # criteria.build(attributes = {}, ...)
   # criteria.create(attributes = {})
   # criteria.create!(attributes = {})
+  accepts_nested_attributes_for :criteria,
+                                allow_destroy: true,
+                                reject_if: proc { |attributes|
+                                  attributes.clean_or_empty?(:criterium)
+                                }
 
   has_many :options, dependent: :destroy
   # options(force_reload = false)
@@ -42,6 +49,9 @@ class Matrix < ActiveRecord::Base
   # options.build(attributes = {}, ...)
   # options.create(attributes = {})
   # options.create!(attributes = {})
+  accepts_nested_attributes_for :options,
+                                allow_destroy: true,
+                                reject_if: :all_blank
 
   validates :name, presence: true, uniqueness: { scope: :owner_id }
 end

@@ -22,7 +22,8 @@ class MatricesController < CrudController
     @matrix = current_user.matrices.new(matrix_params)
 
     if @matrix.save
-      redirect_to @matrix, notice: "#{@matrix.name} was successfully created."
+      flash[:notice] = "#{@matrix.name} was successfully created."
+      redirect_to matrix_steps_path(@matrix)
     else
       render :new
     end
@@ -30,7 +31,17 @@ class MatricesController < CrudController
 
   def update
     if @matrix.update(matrix_params)
-      redirect_to @matrix, notice: "#{@matrix.name} was successfully updated."
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "#{@matrix.name} was successfully updated."
+          redirect_to edit_matrix_path(@matrix)
+        end
+        format.js do
+          @option_id = matrix_params[:options_attributes]['0'][:id].to_i
+          @criterium_id = matrix_params[:options_attributes]['0'][:scores_attributes]['0'][:criterium_id].to_i
+          @amount = matrix_params[:options_attributes]['0'][:scores_attributes]['0'][:amount].to_i
+        end
+      end
     else
       render :edit
     end
@@ -45,7 +56,9 @@ class MatricesController < CrudController
   private
 
   def matrix_params
-    params.require(:matrix).permit(:name)
+    score_attributes = [:id, :amount, :criterium_id, :option_id]
+    option_attributes = [:id, :name, scores_attributes: score_attributes]
+    params.require(:matrix).permit(:name, options_attributes: option_attributes)
   end
 
   def set_matrix
@@ -59,4 +72,9 @@ class MatricesController < CrudController
   def set_options
     @options = @matrix.options.order(:name) # TODO: order by user sequence
   end
+
+  def criteria_count
+    @matrix.criteria.count
+  end
+  helper_method :criteria_count
 end
