@@ -12,7 +12,7 @@ class OptionsController < MatricesChildrenController
     @option = @matrix.options.new(option_params)
 
     if @option.save
-      redirect_to @matrix,
+      redirect_to edit_matrix_path(@matrix),
                   notice: "#{@option.name} was successfully created."
     else
       render :new
@@ -21,7 +21,7 @@ class OptionsController < MatricesChildrenController
 
   def update
     if @option.update(option_params)
-      redirect_to @matrix,
+      redirect_to edit_matrix_path(@matrix),
                   notice: "#{@option.name} was successfully updated."
     else
       render :edit
@@ -30,7 +30,7 @@ class OptionsController < MatricesChildrenController
 
   def destroy
     @option.destroy
-    redirect_to @matrix,
+    redirect_to edit_matrix_path(@matrix),
                 notice: "#{@option.name} was successfully deleted."
   end
 
