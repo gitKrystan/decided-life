@@ -16,6 +16,6 @@ feature 'Scoring a Matrix:' do
     visit edit_matrix_path(test_matrix)
     fill_in "score_amount_#{test_criterium.id}_#{test_option.id}", with: '42'
     click_button "save_score_#{test_criterium.id}_#{test_option.id}"
-    expect(page).to have_content('42')
+    expect(page).to have_selector("input[value='42']")
   end
 end

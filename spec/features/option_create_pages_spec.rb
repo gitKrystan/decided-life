@@ -9,7 +9,7 @@ feature 'Adding Options to a Matrix:' do
   end
 
   scenario 'Adds new options when all validated fields are entered' do
-    visit matrix_path(test_matrix)
+    visit edit_matrix_path(test_matrix)
     click_on 'new-option'
     fill_in 'Name', with: 'Test Option'
     click_button 'save-option'
