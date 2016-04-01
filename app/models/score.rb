@@ -13,5 +13,7 @@ class Score < ActiveRecord::Base
   # create_option(attributes = {})
   # create_option!(attributes = {})
 
-  validates :amount, :criterium, :option, presence: true
+  validates :criterium, :option, presence: true
+  validates :amount, presence: true, on: :create
+  validates :amount, numericality: { only_integer: true }
 end
