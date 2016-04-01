@@ -54,15 +54,11 @@ input {
   }
 
   &[type=button] {
-    @extend .btn, .btn-default;
+    @extend .btn;
   }
 
   &[type=submit] {
     @extend .btn;
-
-    &[name="commit"] {
-      @extend .btn-success;
-    }
 
     &.dec-btn-delete {
       @extend .btn-danger;
@@ -82,5 +78,17 @@ select {
 .dec-btn-options {
   @extend .btn, .btn-sm, .btn-primary;
   margin-left: 15px;
+}
+
+.dec-table-form {
+  input {
+    &[type=number] {
+      width: 80%;
+    }
+    &[type=submit] {
+      @extend .btn-xs;
+      clear: both;
+    }
+  }
 }
 // scss-lint:enable PlaceholderInExtend
