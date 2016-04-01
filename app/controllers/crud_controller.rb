@@ -4,7 +4,7 @@ class CrudController < ApplicationController
   private
 
   def authenticate_matrix_owner
-    unless matrix_owner?
+    unless current_matrix_owner?
       flash[:notice] = 'You are not authorized to edit this matrix.'
       redirect_to @matrix
     end
