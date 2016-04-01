@@ -13,10 +13,13 @@ feature 'Scoring a Matrix:' do
   end
 
   scenario 'Adds a score to a criterium/option combination', js: true do
+    input_field = "score_amount_#{test_criterium.id}_#{test_option.id}"
     visit edit_matrix_path(test_matrix)
-    fill_in "score_amount_#{test_criterium.id}_#{test_option.id}", with: '42'
+    fill_in input_field, with: '42'
     page.find('body').click
-    expect(page).to have_selector("input[value='42']")
+    expect(page).to have_field(input_field, with: '42')
+    click_link('Presentation mode')
+    expect(page).to have_content('42')
   end
 
   scenario 'Adds a score to a criterium/option combination without js' do

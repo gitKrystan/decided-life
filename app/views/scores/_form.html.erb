@@ -1,4 +1,4 @@
-<%= form_for @matrix, html: { class: 'dec-table-form' } do |matrix_fields| %>
+<%= form_for @matrix, html: { class: 'dec-table-form' }, remote: true do |matrix_fields| %>
   <%= matrix_fields.fields_for :options, option do |option_fields| %>
     <%= option_fields.fields_for :scores, Score.find_or_initialize_by(criterium: criterium, option: option) do |score_fields| %>
       <%= score_fields.hidden_field :criterium_id, value: criterium.id %>
