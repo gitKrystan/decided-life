@@ -1,8 +1,6 @@
-<tr>
-  <td><%= criterium.name %></td>
-  <td><%= criterium.weight %></td>
-  <% @options_count.times do %>
-    <td>input goes here</td>
-  <% end %>
-  <td></td>
-</tr>
+<th>
+  <%= criterium.name %>
+  <div class="subheading">
+    Weight: <%= criterium.weight %>
+  </div>
+</th>

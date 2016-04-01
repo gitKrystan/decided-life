@@ -3,13 +3,13 @@ class MatricesController < CrudController
   before_action :set_criteria, only: [:show, :edit, :update]
   before_action :set_options, only: [:show, :edit, :update]
   before_action :authenticate_matrix_owner, only: [:edit, :update, :destroy]
+  before_action :set_criteria_count, only: [:show, :edit]
 
   def index
     @matrices = Matrix.order(created_at: :desc)
   end
 
   def show
-    @options_count = @matrix.options.count
   end
 
   def new
@@ -31,8 +31,10 @@ class MatricesController < CrudController
   end
 
   def update
+    binding.pry
     if @matrix.update(matrix_params)
-      redirect_to @matrix, notice: "#{@matrix.name} was successfully updated."
+      redirect_to edit_matrix_path(@matrix),
+                  notice: "#{@matrix.name} was successfully updated."
     else
       render :edit
     end
@@ -47,7 +49,9 @@ class MatricesController < CrudController
   private
 
   def matrix_params
-    params.require(:matrix).permit(:name)
+    params.require(:matrix)
+          .permit(:name,
+                  score_attributes: [:id, :amount, :criterium_id, :option_id])
   end
 
   def set_matrix
@@ -60,5 +64,9 @@ class MatricesController < CrudController
 
   def set_options
     @options = @matrix.options.order(:name) # TODO: order by user sequence
+  end
+
+  def set_criteria_count
+    @criteria_count = @matrix.criteria.count
   end
 end

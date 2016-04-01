@@ -1,1 +1,16 @@
-<th><%= option.name %></th>
+<tr>
+  <td><%= option.name %></td>
+  <% @criteria.each do |criterium| %>
+    <td>
+      <% if view == 'edit' %>
+        <%= render 'scores/form', criterium: criterium, option: option %>
+      <% else %>
+        <%= option.criterium_score(criterium) %>
+      <% end %>
+    </td>
+  <% end %>
+
+  <% if view == 'edit' %>
+    <td></td>
+  <% end %>
+</tr>

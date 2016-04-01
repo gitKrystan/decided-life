@@ -23,6 +23,9 @@ RSpec.describe Matrix, type: :model do
   it { should have_many(:options).dependent :destroy }
   it { should accept_nested_attributes_for(:options).allow_destroy(true) }
 
+  it { should have_many(:scores) }
+  it { should accept_nested_attributes_for :scores }
+
   it { should validate_presence_of :name }
   it { should validate_uniqueness_of(:name).scoped_to(:owner_id) }
 end

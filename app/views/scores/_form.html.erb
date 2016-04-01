@@ -1,0 +1,9 @@
+<%= form_for @matrix, html: { class: 'table-form' } do |f| %>
+  <%= f.fields_for Score.find_or_initialize_by(criterium: criterium, option: option, matrix: @matrix) do |ff| %>
+    <%= ff.hidden_field :criterium_id, value: criterium.id %>
+    <%= ff.hidden_field :option_id, value: option.id %>
+    <%= ff.number_field :amount,
+                        id: "score_amount_#{criterium.id}_#{option.id}" %>
+  <% end %>
+  <%= f.submit '+', id: "save_score_#{criterium.id}_#{option.id}" %>
+<% end %>

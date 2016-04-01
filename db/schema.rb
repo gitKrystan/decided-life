@@ -63,9 +63,11 @@ ActiveRecord::Schema.define(version: 20160331212356) do
     t.integer  "amount",       default: 0
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "matrix_id"
   end
 
   add_index "scores", ["criterium_id"], name: "index_scores_on_criterium_id", using: :btree
+  add_index "scores", ["matrix_id"], name: "index_scores_on_matrix_id", using: :btree
   add_index "scores", ["option_id"], name: "index_scores_on_option_id", using: :btree
 
   create_table "users", force: :cascade do |t|

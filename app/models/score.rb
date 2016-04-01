@@ -1,4 +1,5 @@
 class Score < ActiveRecord::Base
+  belongs_to :matrix
   belongs_to :criterium
   # criterium(force_reload = false)
   # criterium=(associate)
@@ -13,5 +14,5 @@ class Score < ActiveRecord::Base
   # create_option(attributes = {})
   # create_option!(attributes = {})
 
-  validates :amount, presence: true
+  validates :amount, :criterium, :option, presence: true
 end
