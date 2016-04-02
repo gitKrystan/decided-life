@@ -2,35 +2,33 @@
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
-        <th rowspan="2">Options</th>
-        <th colspan="<%= criteria_count + 1 %>">Criteria</th>
+        <th rowspan="2">
+          Options
+          <% if view == 'edit' %>
+            <%= link_to new_matrix_option_path(@matrix),
+                        id: 'new-option',
+                        class: 'btn btn-xs btn-default' do %>
+              +
+            <% end %>
+          <% end %>
+        </th>
+        <th colspan="<%= criteria_count %>">
+          Criteria
+          <% if view == 'edit' %>
+            <%= link_to new_matrix_criterium_path(@matrix),
+                        id: 'new-criterium',
+                        class: 'btn btn-xs btn-default' do %>
+              +
+            <% end %>
+          <% end %>
+        </th>
       </tr>
       <tr>
         <%= render @criteria, view: view %>
-        <% if view == 'edit' %>
-        <th>
-          <%= link_to new_matrix_criterium_path(@matrix),
-          id: 'new-criterium',
-          class: 'btn btn-small btn-primary' do %>
-          Add Criterium
-          <% end %>
-        </th>
-        <% end %>
       </tr>
     </thead>
     <tbody>
       <%= render @options, view: view %>
-      <% if view == 'edit' %>
-      <tr>
-        <td colspan="<%= criteria_count + 2 %>">
-          <%= link_to new_matrix_option_path(@matrix),
-          id: 'new-option',
-          class: 'btn btn-small btn-primary' do %>
-          Add Option
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
     </tbody>
   </table>
 </div>
