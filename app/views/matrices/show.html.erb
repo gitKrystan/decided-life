@@ -1,10 +1,14 @@
 <% header @matrix.name %>
 
 <% if current_matrix_owner? %>
-  <%= link_to edit_matrix_path(@matrix), id: 'edit-matrix',
-                                         class: 'btn btn-small btn-warning' do %>
-    Edit <%= @matrix.name %>
-  <% end %>
+  <ul class="list-inline">
+    <li>
+      <%= link_to edit_matrix_path(@matrix), id: 'edit-matrix' do %>
+        Edit this matrix
+      <% end %>
+    </li>
+  </ul>
+
 <% else %>
   <p>
     Read only. Log in as the matrix owner to edit.

@@ -7,7 +7,11 @@ form {
 // scss-lint:disable SelectorFormat
 .new_user,
 .edit_user,
-.form-additional-options,
+.form-additional-options {
+  @extend .well;
+  @include make-sm-column(6);
+}
+
 .new_matrix,
 .edit_matrix,
 .new_criterium,
@@ -15,7 +19,6 @@ form {
 .new_option,
 .edit_option {
   @extend .well;
-  @include make-sm-column(6);
 }
 // scss-lint:enable SelectorFormat
 
@@ -98,6 +101,21 @@ select {
       @extend .btn-xs;
       clear: both;
     }
+  }
+}
+
+.btn-circle {
+  @extend .btn;
+  @extend .btn-link;
+  border-radius: 100%;
+  color: $link-color;
+  padding-left: 0;
+  padding-right: 0;
+  height: 36px;
+  width: 36px;
+
+  &:hover {
+    color: $link-color;
   }
 }
 // scss-lint:enable PlaceholderInExtend

@@ -2,16 +2,18 @@
   <td><%= option.name %>
     <% if view == 'edit' %>
       <div>
-        <%= link_to 'Edit',
-                    edit_matrix_option_path(@matrix, option),
+        <%= link_to edit_matrix_option_path(@matrix, option),
                     id: "edit-option-#{option.id}",
-                    class: 'btn btn-xs btn-warning' %>
-        <%= link_to 'Delete',
-                    matrix_option_path(@matrix, option),
+                    class: 'btn-circle' do %>
+          <%= fa_stacked_icon "pencil inverse", base: "circle" %>
+        <% end %>
+        <%= link_to matrix_option_path(@matrix, option),
                     data: { confirm: 'You sure?',
                             method: 'delete'},
                     id: "delete-option-#{option.id}",
-                    class: 'btn btn-xs btn-danger' %>
+                    class: 'btn-circle' do %>
+          <%= fa_stacked_icon "times inverse", base: "circle" %>
+        <% end %>
       </div>
     <% end %>
   </td>

@@ -57,9 +57,12 @@
 
 <div class="container">
   <!-- Page header -->
-  <div class="page-header">
-    <h1><%= yield :header %></h1>
-  </div>
+  <% if content_for?(:header) %>
+    <div class="page-header">
+      <h1><%= yield :header %><small><%= yield :header_buttons %></small></h1>
+
+    </div>
+  <% end %>
 
   <%= yield %>
 </div>

@@ -7,8 +7,8 @@
           <% if view == 'edit' %>
             <%= link_to new_matrix_option_path(@matrix),
                         id: 'new-option',
-                        class: 'btn btn-xs btn-default' do %>
-              +
+                        class: 'btn-circle' do %>
+              <%= fa_icon 'plus' %>
             <% end %>
           <% end %>
         </th>
@@ -17,8 +17,8 @@
           <% if view == 'edit' %>
             <%= link_to new_matrix_criterium_path(@matrix),
                         id: 'new-criterium',
-                        class: 'btn btn-xs btn-default' do %>
-              +
+                        class: 'btn-circle' do %>
+              <%= fa_icon 'plus' %>
             <% end %>
           <% end %>
         </th>

@@ -1,18 +1,24 @@
 <th>
-  <%= criterium.name %>
-  <% if view == 'edit' %>
-    <%= link_to 'Edit',
-                edit_matrix_criterium_path(@matrix, criterium),
-                id: "edit-criterium-#{criterium.id}",
-                class: 'btn btn-xs btn-warning' %>
-    <%= link_to 'Delete',
-                matrix_criterium_path(@matrix, criterium),
-                data: { confirm: 'You sure?',
-                        method: 'delete'},
-                id: "delete-criterium-#{criterium.id}",
-                class: 'btn btn-xs btn-danger' %>
-  <% end %>
-  <div class="table-subheading">
-    Weight: <%= criterium.weight %>
+  <div class="col-sm-9">
+    <%= criterium.name %>
+    <div class="table-subheading">
+      Weight: <%= criterium.weight %>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <% if view == 'edit' %>
+      <%= link_to edit_matrix_criterium_path(@matrix, criterium),
+                  id: "edit-criterium-#{criterium.id}",
+                  class: 'btn-circle' do %>
+        <%= fa_stacked_icon "pencil inverse", base: "circle" %>
+      <% end %>
+      <%= link_to matrix_criterium_path(@matrix, criterium),
+                  data: { confirm: 'You sure?',
+                          method: 'delete'},
+                  id: "delete-criterium-#{criterium.id}",
+                  class: 'btn-circle' do %>
+        <%= fa_stacked_icon "times inverse", base: "circle" %>
+      <% end %>
+    <% end %>
   </div>
 </th>

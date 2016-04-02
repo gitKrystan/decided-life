@@ -1,9 +1,17 @@
-<% header "Edit #{@matrix.name}" %>
+<% header "#{@matrix.name}" %>
+<ul class="list-inline">
+  <li><%= link_to 'Presentation mode', @matrix %></li>
+  <li>
+    <a id='show-matrix-form' data-toggle="collapse" href="#editMatrixName" aria-expanded="false" aria-controls="editMatrixName">
+      Edit details
+    </a>
+  </li>
+</ul>
 
-<%= link_to 'Presentation mode', @matrix %>
 
-<div class="row">
-  <%= render 'form', edit: true %>
+<div class="collapse" id="editMatrixName">
+    <%= render 'form', edit: true %>
 </div>
+
 
 <%= render 'matrix', view: 'edit' %>
