@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <th rowspan="2">
-          <%= link_to 'Options', sort_options: 'name' %>
+          <%= sort_options 'name', 'Options' %>
           <% if view == 'edit' %>
             <%= link_to new_matrix_option_path(@matrix),
                         id: 'new-option',
@@ -14,7 +14,7 @@
         </th>
         <% unless view == 'edit' %>
           <th rowspan="2">
-            <%= link_to 'Weighted Scores', sort_options: 'total_score' %>
+            <%= sort_options 'total_score', 'Total Scores'  %>
           </th>
         <% end %>
         <th colspan="<%= criteria_count %>">
