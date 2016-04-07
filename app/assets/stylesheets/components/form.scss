@@ -69,6 +69,10 @@ input {
       @extend .btn-danger;
     }
   }
+
+  &.dec-numbers-only {
+    text-align: right;
+  }
 }
 
 select {

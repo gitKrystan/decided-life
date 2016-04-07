@@ -17,12 +17,24 @@
       </div>
     <% end %>
   </td>
+  <% unless view == 'edit' %>
+    <td class="dec-table-score">
+      <div class="dec-table-score-weighted">
+        <%= option.total_score %>
+      </div>
+    </td>
+  <% end %>
   <% @criteria.each do |criterium| %>
-    <td>
+    <td class="dec-table-score">
       <% if view == 'edit' %>
         <%= render 'scores/form', criterium: criterium, option: option %>
       <% else %>
-        <%= option.criterium_score(criterium) %>
+        <div class="dec-table-score-weighted">
+          <%= option.weighted_criterium_score(criterium) %>
+        </div>
+        <div>
+          <%= option.criterium_score(criterium) %>
+        </div>
       <% end %>
     </td>
   <% end %>

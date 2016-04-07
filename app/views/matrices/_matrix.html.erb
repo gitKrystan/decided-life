@@ -12,6 +12,11 @@
             <% end %>
           <% end %>
         </th>
+        <% unless view == 'edit' %>
+          <th rowspan="2">
+            Weighted Scores
+          </th>
+        <% end %>
         <th colspan="<%= criteria_count %>">
           Criteria
           <% if view == 'edit' %>
