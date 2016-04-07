@@ -54,4 +54,8 @@ class Option < ActiveRecord::Base
       0
     end
   end
+
+  def weighted_criterium_score(criterium)
+    criterium_score(criterium) * criterium.weight
+  end
 end

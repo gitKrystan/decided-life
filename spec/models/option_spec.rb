@@ -29,4 +29,23 @@ RSpec.describe Option, type: :model do
         .to equal test_score.amount
     end
   end
+
+  describe '.weighted_criterium_score' do
+    let(:test_matrix) { create :matrix }
+    let!(:test_criterium) { create :criterium, matrix: test_matrix }
+    let!(:test_option) { create :option, matrix: test_matrix }
+
+    it 'returns zero if no score has been given' do
+      expect(test_option.weighted_criterium_score(test_criterium)).to equal 0
+    end
+
+    it 'returns the weighted score amount for the given criterium' do
+      test_score = create :score,
+                          criterium: test_criterium,
+                          option: test_option
+      expected_weighted_score = test_score.amount * test_criterium.weight
+      expect(test_option.weighted_criterium_score(test_criterium))
+        .to equal expected_weighted_score
+    end
+  end
 end
