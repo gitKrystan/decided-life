@@ -1,7 +1,10 @@
 .dec-table-score {
   text-align: right;
+}
 
-  .dec-table-score-weighted {
-    font-weight: bold;
-  }
+.dec-table-score-weighted {
+  line-height: 1.2;
+  color: $gray-dark;
+  font-size: 1.5em;
+  font-weight: $headings-font-weight;
 }
