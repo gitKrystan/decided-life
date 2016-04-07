@@ -67,10 +67,7 @@ class MatricesController < CrudController
   end
 
   def set_options
-    @options = @matrix.options.sort_by do |option|
-      option.send(options_sort_method)
-    end
-    @options = @options.reverse if options_sort_direction == 'desc'
+    @options = @matrix.options_by(options_sort_method, options_sort_direction)
   end
 
   def options_sort_method
