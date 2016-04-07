@@ -70,7 +70,8 @@ class MatricesController < CrudController
   end
 
   def set_options
-    @options = @matrix.options.order(:name) # TODO: order by user sequence
+    sort_order = params[:sort_options] ? params[:sort_options] : 'name'
+    @options = @matrix.options.sort_by { |option| option.send(sort_order) }
   end
 
   def criteria_count
