@@ -48,4 +48,23 @@ RSpec.describe Option, type: :model do
         .to equal expected_weighted_score
     end
   end
+
+  describe '.total_score' do
+    let(:test_matrix) { create :matrix }
+    let!(:criterium1) { create :criterium, matrix: test_matrix }
+    let!(:criterium2) { create :criterium, matrix: test_matrix }
+    let!(:test_option) { create :option, matrix: test_matrix }
+
+    it 'returns zero if no scores have been given' do
+      expect(test_option.total_score).to equal 0
+    end
+
+    it 'returns the total of all weighted scores for the option' do
+      create :score, criterium: criterium1, option: test_option
+      create :score, criterium: criterium2, option: test_option
+      expected_total_score = test_option.weighted_criterium_score(criterium1) +
+                             test_option.weighted_criterium_score(criterium2)
+      expect(test_option.total_score).to equal expected_total_score
+    end
+  end
 end

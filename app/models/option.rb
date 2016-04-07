@@ -58,4 +58,12 @@ class Option < ActiveRecord::Base
   def weighted_criterium_score(criterium)
     criterium_score(criterium) * criterium.weight
   end
+
+  def total_score
+    total = 0
+    criteria.each do |criterium|
+      total += weighted_criterium_score(criterium)
+    end
+    total
+  end
 end
