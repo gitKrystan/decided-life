@@ -1,5 +1,5 @@
 class MatricesController < CrudController
-  helper_method :options_sort_method
+  helper_method :options_sort_method, :options_sort_direction
   before_action :set_matrix, only: [:show, :edit, :update, :destroy]
   before_action :set_criteria, only: [:show, :edit, :update]
   before_action :set_options, only: [:show, :edit, :update]
@@ -70,11 +70,15 @@ class MatricesController < CrudController
     @options = @matrix.options.sort_by do |option|
       option.send(options_sort_method)
     end
-    @options = @options.reverse if params[:options_direction] == 'desc'
+    @options = @options.reverse if options_sort_direction == 'desc'
   end
 
   def options_sort_method
     params[:sort_options] || 'name'
+  end
+
+  def options_sort_direction
+    params[:options_direction] || 'asc'
   end
 
   def criteria_count
