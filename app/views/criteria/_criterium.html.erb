@@ -1,6 +1,7 @@
 <th>
   <div class="col-sm-9">
-    <%= criterium.name %>
+    <%= sort_options "criterium_score", criterium_id: criterium.id,
+                     title: criterium.name  %>
     <div class="table-subheading">
       Weight: <%= criterium.weight %>
     </div>
