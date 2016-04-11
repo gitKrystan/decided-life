@@ -26,6 +26,9 @@ class Criterium < ActiveRecord::Base
   # bins.build(attributes = {}, ...)
   # bins.create(attributes = {})
   # bins.create!(attributes = {})
+  accepts_nested_attributes_for :bins,
+                                allow_destroy: true,
+                                reject_if: :all_blank
 
   has_many :scores
   # scores(force_reload = false)
@@ -68,10 +71,12 @@ class Criterium < ActiveRecord::Base
   private
 
   def generate_bins
-    default_bins = { 0 => 'poor', 1 => 'good', 2 => '',
-                     3 => 'better', 4 => '', 5 => 'best' }
-    default_bins.each do |score, description|
-      bins.new(score: score, description: description)
+    if bins.empty?
+      default_bins = { 0 => 'poor', 1 => 'good', 2 => '',
+                       3 => 'better', 4 => '', 5 => 'best' }
+      default_bins.each do |score, description|
+        bins.new(score: score, description: description)
+      end
     end
   end
 end
