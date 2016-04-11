@@ -1,0 +1,45 @@
+%dec-direction {
+  text-decoration: none;
+  color: $gray-light;
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+}
+
+%dec-sortable {
+  color: $text-color;
+
+  &:hover {
+    text-decoration: none;
+
+    &::after {
+      color: $link-hover-color;
+    }
+  }
+
+  &::after {
+    @extend %dec-direction;
+    padding-left: 5px;
+  }
+
+  &.dec-asc::after,
+  &.dec-desc::after {
+    color: $link-color;
+  }
+}
+
+.dec-sort-vert {
+  @extend %dec-sortable;
+
+  &::after {
+    content: '\f0dc';
+  }
+
+  &.dec-asc::after {
+    content: '\f0de';
+  }
+
+  &.dec-desc::after {
+    content: '\f0dd';
+  }
+}
