@@ -54,4 +54,17 @@ class Matrix < ActiveRecord::Base
                                 reject_if: :all_blank
 
   validates :name, presence: true, uniqueness: { scope: :owner_id }
+
+  def options_by(options_sort_method, options_sort_direction,
+                 options_sort_argument)
+    sorted_options = options.sort_by do |option|
+      if options_sort_argument
+        option.send(options_sort_method, options_sort_argument)
+      else
+        option.send(options_sort_method)
+      end
+    end
+    return sorted_options.reverse if options_sort_direction == 'desc'
+    sorted_options
+  end
 end

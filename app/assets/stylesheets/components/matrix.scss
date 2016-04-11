@@ -8,3 +8,20 @@
   font-size: 1.5em;
   font-weight: $headings-font-weight;
 }
+
+%dec-direction {
+  text-decoration: none;
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.dec-asc::after {
+  @extend %dec-direction;
+  content: ' \f0de';
+}
+
+.dec-desc::after {
+  @extend %dec-direction;
+  content: ' \f0dd';
+}

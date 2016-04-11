@@ -17,7 +17,7 @@ feature 'Scoring a Matrix:' do
     visit edit_matrix_path(test_matrix)
     fill_in input_field, with: '42'
     page.find('body').click
-    expect(page).to have_field(input_field, with: '42')
+    expect(find_field(input_field).value).to eq '42'
     click_link('Presentation mode')
     expect(page).to have_content('42')
   end
