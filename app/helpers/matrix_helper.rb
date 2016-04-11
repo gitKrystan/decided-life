@@ -15,6 +15,6 @@ module MatrixHelper
     link_to title, { sort_options_by: sort_method,
                      options_direction: direction,
                      sort_by_criterium: criterium_id },
-            class: css_class
+            class: "dec-sort-vert #{css_class}"
   end
 end
