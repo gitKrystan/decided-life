@@ -1,4 +1,6 @@
 class Criterium < ActiveRecord::Base
+  after_initialize :generate_bins
+
   belongs_to :matrix
   # matrix(force_reload = false)
   # matrix=(associate)
@@ -62,4 +64,14 @@ class Criterium < ActiveRecord::Base
   # options.create!(attributes = {})
 
   validates :name, presence: true, uniqueness: { scope: :matrix_id }
+
+  private
+
+  def generate_bins
+    default_bins = { 0 => 'poor', 1 => 'good', 2 => '',
+                     3 => 'better', 4 => '', 5 => 'best' }
+    default_bins.each do |score, description|
+      bins.new(score: score, description: description)
+    end
+  end
 end
