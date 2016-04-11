@@ -7,6 +7,24 @@ class Criterium < ActiveRecord::Base
   # create_matrix!(attributes = {})
   validates :matrix, presence: true
 
+  has_many :bins, dependent: :destroy
+  # bins(force_reload = false)
+  # bins<<(object, ...)
+  # bins.delete(object, ...)
+  # bins.destroy(object, ...)
+  # bins=(objects)
+  # bin_ids
+  # bin_ids=(ids)
+  # bins.clear
+  # bins.empty?
+  # bins.size
+  # bins.find(...)
+  # bins.where(...)
+  # bins.exists?(...)
+  # bins.build(attributes = {}, ...)
+  # bins.create(attributes = {})
+  # bins.create!(attributes = {})
+
   has_many :scores
   # scores(force_reload = false)
   # scores<<(object, ...)

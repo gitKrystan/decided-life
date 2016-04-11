@@ -13,6 +13,13 @@ class Score < ActiveRecord::Base
   # create_option(attributes = {})
   # create_option!(attributes = {})
 
+  belongs_to :bin
+  # bin(force_reload = false)
+  # bin=(associate)
+  # build_bin(attributes = {})
+  # create_bin(attributes = {})
+  # create_bin!(attributes = {})
+
   validates :criterium, :option, presence: true
   validates :amount, presence: true, on: :create
   validates :amount, numericality: { only_integer: true }

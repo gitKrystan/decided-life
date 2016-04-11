@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401222434) do
+ActiveRecord::Schema.define(version: 20160411170511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bins", force: :cascade do |t|
+    t.integer  "score"
+    t.string   "description"
+    t.decimal  "min"
+    t.decimal  "max"
+    t.integer  "criterium_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "bins", ["criterium_id"], name: "index_bins_on_criterium_id", using: :btree
 
   create_table "create_scores", force: :cascade do |t|
     t.integer  "criterium_id"
@@ -63,8 +75,10 @@ ActiveRecord::Schema.define(version: 20160401222434) do
     t.integer  "amount"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "bin_id"
   end
 
+  add_index "scores", ["bin_id"], name: "index_scores_on_bin_id", using: :btree
   add_index "scores", ["criterium_id"], name: "index_scores_on_criterium_id", using: :btree
   add_index "scores", ["option_id"], name: "index_scores_on_option_id", using: :btree
 
@@ -96,11 +110,13 @@ ActiveRecord::Schema.define(version: 20160401222434) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "bins", "criteria"
   add_foreign_key "create_scores", "criteria"
   add_foreign_key "create_scores", "options"
   add_foreign_key "criteria", "matrices"
   add_foreign_key "matrices", "users", column: "owner_id"
   add_foreign_key "options", "matrices"
+  add_foreign_key "scores", "bins"
   add_foreign_key "scores", "criteria"
   add_foreign_key "scores", "options"
 end
