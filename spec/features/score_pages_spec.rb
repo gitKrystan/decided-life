@@ -5,6 +5,8 @@ feature 'Scoring a Matrix:' do
   given(:test_matrix) { create :matrix, owner: test_user }
   given!(:test_criterium) { create :criterium, matrix: test_matrix }
   given!(:test_option) { create :option, matrix: test_matrix }
+  given!(:test_select) { "score_amount_#{test_criterium.id}_#{test_option.id}" }
+  given!(:test_selection) { test_criterium.bins.first }
 
   background do
     3.times { create :criterium, matrix: test_matrix }
@@ -13,20 +15,20 @@ feature 'Scoring a Matrix:' do
   end
 
   scenario 'Adds a score to a criterium/option combination', js: true do
-    input_field = "score_amount_#{test_criterium.id}_#{test_option.id}"
     visit edit_matrix_path(test_matrix)
-    fill_in input_field, with: '42'
-    page.find('body').click
-    expect(find_field(input_field).value).to eq '42'
+    select test_selection.select_description, from: test_select
+    expect(page).to have_select test_select,
+                                selected: test_selection.select_description
     click_link('Presentation mode')
-    expect(page).to have_content('42')
+    expect(page).to have_content('test_selection.score')
   end
 
   scenario 'Adds a score to a criterium/option combination without js' do
     visit edit_matrix_path(test_matrix)
-    fill_in "score_amount_#{test_criterium.id}_#{test_option.id}", with: '42'
+    select test_selection.select_description, from: test_select
     click_button "save_score_#{test_criterium.id}_#{test_option.id}"
-    expect(page).to have_selector("input[value='42']")
+    expect(page).to have_select test_select,
+                                selected: test_selection.select_description
   end
 
   scenario 'Updates a score if it already exists without js' do

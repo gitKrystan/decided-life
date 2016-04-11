@@ -6,7 +6,11 @@
       <!-- <%= score_fields.text_field :amount,
                                   class: "dec-numbers-only",
                                   id: "score_amount_#{criterium.id}_#{option.id}" %> -->
-      <%= score_fields.collection_select :bin_id, criterium.bins, :id, :select_description, include_blank: true %>
+      <%= score_fields.collection_select :bin_id,
+                                         criterium.bins, :id,
+                                         :select_description,
+                                         {include_blank: true},
+                                         {id: "score_amount_#{criterium.id}_#{option.id}"} %>
     <% end %>
   <% end %>
   <%= matrix_fields.submit '+', id: "save_score_#{criterium.id}_#{option.id}" %>

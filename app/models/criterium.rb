@@ -26,9 +26,9 @@ class Criterium < ActiveRecord::Base
   # bins.build(attributes = {}, ...)
   # bins.create(attributes = {})
   # bins.create!(attributes = {})
-  accepts_nested_attributes_for :bins,
-                                allow_destroy: true,
-                                reject_if: :all_blank
+  # accepts_nested_attributes_for :bins,
+  #                               allow_destroy: true,
+  #                               reject_if: :all_blank
 
   has_many :scores
   # scores(force_reload = false)

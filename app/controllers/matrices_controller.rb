@@ -54,7 +54,7 @@ class MatricesController < CrudController
   private
 
   def matrix_params
-    score_attributes = [:id, :amount, :criterium_id, :option_id]
+    score_attributes = [:id, :amount, :criterium_id, :option_id, :bin_id]
     option_attributes = [:id, :name, scores_attributes: score_attributes]
     params.require(:matrix).permit(:name, options_attributes: option_attributes)
   end
@@ -95,6 +95,6 @@ class MatricesController < CrudController
     scores_attributes = options_attributes[:scores_attributes]['0']
     @option_id = options_attributes[:id].to_i
     @criterium_id = scores_attributes[:criterium_id].to_i
-    @amount = scores_attributes[:amount].to_i
+    @bin_id = scores_attributes[:bin_id].to_i
   end
 end

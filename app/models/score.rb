@@ -21,6 +21,8 @@ class Score < ActiveRecord::Base
   # create_bin!(attributes = {})
 
   validates :criterium, :option, presence: true
-  validates :amount, presence: true, on: :create
-  validates :amount, numericality: { only_integer: true }
+
+  def amount
+    bin.score
+  end
 end
