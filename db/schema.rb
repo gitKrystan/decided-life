@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412181152) do
+ActiveRecord::Schema.define(version: 20160412214229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,17 +27,6 @@ ActiveRecord::Schema.define(version: 20160412181152) do
   end
 
   add_index "bins", ["criterium_id"], name: "index_bins_on_criterium_id", using: :btree
-
-  create_table "create_scores", force: :cascade do |t|
-    t.integer  "criterium_id"
-    t.integer  "option_id"
-    t.integer  "score",        default: 0
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_index "create_scores", ["criterium_id"], name: "index_create_scores_on_criterium_id", using: :btree
-  add_index "create_scores", ["option_id"], name: "index_create_scores_on_option_id", using: :btree
 
   create_table "criteria", force: :cascade do |t|
     t.integer  "matrix_id"
@@ -110,8 +99,6 @@ ActiveRecord::Schema.define(version: 20160412181152) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   add_foreign_key "bins", "criteria"
-  add_foreign_key "create_scores", "criteria"
-  add_foreign_key "create_scores", "options"
   add_foreign_key "criteria", "matrices"
   add_foreign_key "matrices", "users", column: "owner_id"
   add_foreign_key "options", "matrices"
