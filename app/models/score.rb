@@ -20,9 +20,9 @@ class Score < ActiveRecord::Base
   # create_bin(attributes = {})
   # create_bin!(attributes = {})
 
-  validates :criterium, :option, presence: true
+  validates :criterium, :option, :bin, presence: true
 
   def amount
-    bin.score
+    bin.score if bin
   end
 end
