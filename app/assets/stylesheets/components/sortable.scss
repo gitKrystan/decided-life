@@ -12,18 +12,18 @@
   &:hover {
     text-decoration: none;
 
-    &::after {
+    &::before {
       color: $link-hover-color;
     }
   }
 
-  &::after {
+  &::before {
     @extend %dec-direction;
-    padding-left: 5px;
+    padding-right: 5px;
   }
 
-  &.dec-asc::after,
-  &.dec-desc::after {
+  &.dec-asc::before,
+  &.dec-desc::before {
     color: $link-color;
   }
 }
@@ -31,15 +31,15 @@
 .dec-sort-vert {
   @extend %dec-sortable;
 
-  &::after {
+  &::before {
     content: '\f0dc';
   }
 
-  &.dec-asc::after {
+  &.dec-asc::before {
     content: '\f0de';
   }
 
-  &.dec-desc::after {
+  &.dec-desc::before {
     content: '\f0dd';
   }
 }

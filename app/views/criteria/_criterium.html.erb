@@ -1,12 +1,5 @@
 <th>
-  <div class="col-sm-9">
-    <%= sort_options "criterium_score", criterium_id: criterium.id,
-                     title: criterium.name  %>
-    <div class="table-subheading">
-      Weight: <%= criterium.weight %>
-    </div>
-  </div>
-  <div class="col-sm-3">
+  <div class="">
     <% if view == 'edit' %>
       <%= link_to edit_matrix_criterium_path(@matrix, criterium),
                   id: "edit-criterium-#{criterium.id}",
@@ -22,4 +15,15 @@
       <% end %>
     <% end %>
   </div>
+  <div class="dec-table-criterium-th">
+    <%= sort_options "criterium_score", criterium_id: criterium.id,
+                     title: criterium.name  %>
+  </div>
+  <div class="dec-table-score-info">
+    <% if criterium == @criteria.first %>
+    Influence:
+    <% end %>
+    <%= number_to_percentage criterium.weight, precision: 1 %>
+  </div>
+
 </th>
