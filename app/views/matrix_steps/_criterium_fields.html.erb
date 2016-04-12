@@ -8,7 +8,7 @@
   <div class="field">
     <%= f.label :importance, class: "control-label" %>
     <div class="dec-input-wrapper">
-      <%= f.number_field :importance, class: "form-control" %>
+      <%= f.select :importance, importance_options(f), class: "form-control" %>
     </div>
   </div>
   <%= link_to_remove_association 'remove criterium', f %>

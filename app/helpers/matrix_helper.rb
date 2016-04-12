@@ -17,4 +17,18 @@ module MatrixHelper
                      sort_by_criterium: criterium_id },
             class: "dec-sort-vert #{css_class}"
   end
+
+  def importance_options(f)
+    default = f.object.importance
+    importances = {
+      1 => 'Very Low',
+      2 => 'Low',
+      3 => 'Default/Medium',
+      4 => 'High',
+      5 => 'Very High'
+    }
+    options = importances.map { |k, v| ["#{k}: #{v}", k] }
+    options.unshift(["#{default}: #{importances[default]}", default])
+    options_for_select options
+  end
 end
