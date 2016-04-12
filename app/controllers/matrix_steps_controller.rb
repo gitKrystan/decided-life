@@ -29,7 +29,7 @@ class MatrixStepsController < MatricesChildrenController
   def matrix_params
     params.require(:matrix)
           .permit(:name,
-                  criteria_attributes: [:id, :name, :weight, :_destroy],
+                  criteria_attributes: [:id, :name, :importance, :_destroy],
                   options_attributes: [:id, :name, :_destroy])
   end
 

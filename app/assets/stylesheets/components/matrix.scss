@@ -1,5 +1,10 @@
-.dec-table-score {
+%right-justified-numbers {
   text-align: right;
+  font-weight: normal;
+}
+
+.dec-table-score {
+  @extend %right-justified-numbers;
 }
 
 .dec-table-score-weighted {
@@ -7,4 +12,16 @@
   color: $gray-dark;
   font-size: 1.5em;
   font-weight: $headings-font-weight;
+}
+
+.dec-table-score-info {
+  @extend %right-justified-numbers;
+}
+
+.dec-matrix > thead > tr > th {
+  vertical-align: top;
+}
+
+.dec-table-th {
+  padding-bottom: 15px;
 }

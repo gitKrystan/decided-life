@@ -56,7 +56,7 @@ feature 'Adding criteria: ' do
   end
 
   scenario 'Returns an error when fields are incorrectly entered' do
-    fill_in 'matrix_criteria_attributes_0_weight', with: '42'
+    select '4', from: 'matrix_criteria_attributes_0_importance'
     click_button 'Continue'
     expect(page).to have_content('errors')
   end

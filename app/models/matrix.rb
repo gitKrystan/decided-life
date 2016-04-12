@@ -67,4 +67,8 @@ class Matrix < ActiveRecord::Base
     return sorted_options.reverse if options_sort_direction == 'desc'
     sorted_options
   end
+
+  def total_criteria_importance
+    criteria.reduce(0) { |a, e| a + e.importance }
+  end
 end

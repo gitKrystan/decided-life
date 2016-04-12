@@ -37,7 +37,7 @@ class CriteriaController < MatricesChildrenController
   private
 
   def criterium_params
-    params.require(:criterium).permit(:name, :weight)
+    params.require(:criterium).permit(:name, :importance)
   end
 
   def set_criterium

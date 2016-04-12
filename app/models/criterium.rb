@@ -68,6 +68,10 @@ class Criterium < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { scope: :matrix_id }
 
+  def weight
+    importance.to_f / matrix.total_criteria_importance * 100
+  end
+
   private
 
   def generate_bins
