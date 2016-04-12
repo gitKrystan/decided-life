@@ -1,4 +1,6 @@
 class Criterium < ActiveRecord::Base
+  after_initialize :generate_bins
+
   belongs_to :matrix
   # matrix(force_reload = false)
   # matrix=(associate)
@@ -6,6 +8,27 @@ class Criterium < ActiveRecord::Base
   # create_matrix(attributes = {})
   # create_matrix!(attributes = {})
   validates :matrix, presence: true
+
+  has_many :bins, dependent: :destroy
+  # bins(force_reload = false)
+  # bins<<(object, ...)
+  # bins.delete(object, ...)
+  # bins.destroy(object, ...)
+  # bins=(objects)
+  # bin_ids
+  # bin_ids=(ids)
+  # bins.clear
+  # bins.empty?
+  # bins.size
+  # bins.find(...)
+  # bins.where(...)
+  # bins.exists?(...)
+  # bins.build(attributes = {}, ...)
+  # bins.create(attributes = {})
+  # bins.create!(attributes = {})
+  # accepts_nested_attributes_for :bins,
+  #                               allow_destroy: true,
+  #                               reject_if: :all_blank
 
   has_many :scores
   # scores(force_reload = false)
@@ -44,4 +67,16 @@ class Criterium < ActiveRecord::Base
   # options.create!(attributes = {})
 
   validates :name, presence: true, uniqueness: { scope: :matrix_id }
+
+  private
+
+  def generate_bins
+    if bins.empty?
+      default_bins = { 0 => 'poor', 1 => 'good', 2 => '',
+                       3 => 'better', 4 => '', 5 => 'best' }
+      default_bins.each do |score, description|
+        bins.new(score: score, description: description)
+      end
+    end
+  end
 end

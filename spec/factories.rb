@@ -35,8 +35,8 @@ FactoryGirl.define do
   end
 
   factory :score do
-    amount 150
     criterium
     option
+    bin_id 1
   end
 end
