@@ -17,8 +17,7 @@ feature 'Scoring a Matrix:' do
   scenario 'Adds a score to a criterium/option combination', js: true do
     visit edit_matrix_path(test_matrix)
     select test_selection.select_description, from: test_select
-    expect(page).to have_select test_select,
-                                selected: test_selection.select_description
+    expect(page.find_by_id(test_select).value).to eq test_selection.id.to_s
     click_link('Presentation mode')
     expect(page).to have_content(test_selection.score)
   end
@@ -27,8 +26,7 @@ feature 'Scoring a Matrix:' do
     visit edit_matrix_path(test_matrix)
     select test_selection.select_description, from: test_select
     click_button "save_score_#{test_criterium.id}_#{test_option.id}"
-    expect(page).to have_select test_select,
-                                selected: test_selection.select_description
+    expect(page.find_by_id(test_select).value).to eq test_selection.id.to_s
   end
 
   scenario 'Updates a score if it already exists without js' do
@@ -37,11 +35,9 @@ feature 'Scoring a Matrix:' do
                         option: test_option,
                         bin: test_criterium.bins.second
     visit edit_matrix_path(test_matrix)
-    expect(page).to have_select test_select,
-                                selected: test_score.bin.select_description
+    expect(page.find_by_id(test_select).value).to eq test_score.bin.id.to_s
     select test_selection.select_description, from: test_select
     click_button "save_score_#{test_criterium.id}_#{test_option.id}"
-    expect(page).to have_select test_select,
-                                selected: test_selection.select_description
+    expect(page.find_by_id(test_select).value).to eq test_selection.id.to_s
   end
 end

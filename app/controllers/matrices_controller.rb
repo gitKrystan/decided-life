@@ -33,13 +33,8 @@ class MatricesController < CrudController
 
   def update
     if @matrix.update(matrix_params)
-      respond_to do |format|
-        format.html do
-          flash[:notice] = "#{@matrix.name} was successfully updated."
-          redirect_to edit_matrix_path(@matrix)
-        end
-        format.js { get_attributes_for_jquery(matrix_params) }
-      end
+      flash[:notice] = "#{@matrix.name} was successfully updated."
+      redirect_to edit_matrix_path(@matrix)
     else
       render :edit
     end
@@ -89,12 +84,4 @@ class MatricesController < CrudController
     @matrix.criteria.count
   end
   helper_method :criteria_count
-
-  def get_attributes_for_jquery(matrix_params)
-    options_attributes = matrix_params[:options_attributes]['0']
-    scores_attributes = options_attributes[:scores_attributes]['0']
-    @option_id = options_attributes[:id].to_i
-    @criterium_id = scores_attributes[:criterium_id].to_i
-    @bin_id = scores_attributes[:bin_id].to_i
-  end
 end
