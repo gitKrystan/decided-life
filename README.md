@@ -1,8 +1,8 @@
-# Decidedly
+# Decided.Life
 
 ##### By Krystan Menne
 
-Decidedly is an app that helps users make decisions using a [decision matrix](https://en.wikipedia.org/wiki/Decision_matrix).
+Decided.Life is an app that helps users make decisions using a [decision matrix](https://en.wikipedia.org/wiki/Decision_matrix).
 Users create a matrix then options and decision criteria. The user weights the decision criteria based on their priorities, then assigns scores to each option based on these criteria.
 The matrix weights each score based on the criteria, then outputs a total weighted score for each option.
 
@@ -13,7 +13,7 @@ The matrix weights each score based on the criteria, then outputs a total weight
 * PhantomJS
 
 ## Installation
-1. `$ git clone https://github.com/gitKrystan/decidedly`
+1. `$ git clone https://github.com/gitKrystan/decided-life.git`
 1. Change into the new directory
 1. `$ bundle install`
 1. Create database and run migrations
