@@ -2,6 +2,7 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 $dec-gray: #7f8c8d;
+$dec-navbar-bg: #34495e;
 
 $gray-base:              darken($dec-gray, 45%) !default;
 $gray-darker:            darken($dec-gray, 30%) !default;
@@ -20,6 +21,7 @@ $brand-danger:          #EB6B56 !default;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
+$headings-font-family:    'Oswald', sans-serif !default;
 $headings-font-weight:    300 !default;
 
 //== Components
@@ -29,3 +31,25 @@ $headings-font-weight:    300 !default;
 $border-radius-base:        0 !default;
 $border-radius-large:       0 !default;
 $border-radius-small:       0 !default;
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+$navbar-height:                    44px !default;
+
+//=== Inverted navbar
+// Reset inverted navbar basics
+$navbar-inverse-color:                      $gray-light !default;
+$navbar-inverse-bg:                         $dec-navbar-bg !default;
+$navbar-inverse-border:                     transparent !default;
+
+// Inverted navbar links
+$navbar-inverse-link-color:                 lighten($brand-primary, 45%) !default;
+$navbar-inverse-link-hover-color:           #fff !default;
+$navbar-inverse-link-hover-bg:              transparent !default;
+$navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color !default;
+$navbar-inverse-link-active-bg:             lighten($navbar-inverse-bg, 10%) !default;
+$navbar-inverse-link-disabled-color:        #444 !default;
+$navbar-inverse-link-disabled-bg:           transparent !default;

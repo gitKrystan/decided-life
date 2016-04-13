@@ -1,0 +1,8 @@
+.navbar {
+  box-shadow: none;
+
+  &-brand {
+    font-family: $headings-font-family;
+    font-weight: 300;
+  }
+}
