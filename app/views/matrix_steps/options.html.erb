@@ -1,5 +1,7 @@
 <% header "Add Options" %>
 
+<%= render 'layouts/progress', percent: 25 %>
+
 <%= render layout: 'form' do |f| %>
   <div id="options">
     <%= f.fields_for :options do |option| %>

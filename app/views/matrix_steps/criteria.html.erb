@@ -1,5 +1,7 @@
 <% header "Add Criteria" %>
 
+<%= render 'layouts/progress', percent: 10 %>
+
 <%= render layout: 'form' do |f| %>
   <div id="criteria">
     <%= f.fields_for :criteria do |criterium| %>
