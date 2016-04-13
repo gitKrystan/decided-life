@@ -11,5 +11,8 @@
       <%= f.select :importance, importance_options(f), class: "form-control" %>
     </div>
   </div>
+  <%= f.fields_for :bins do |bin| %>
+    <%= render 'bin_fields', f: bin %>
+  <% end %>
   <%= link_to_remove_association 'remove criterium', f %>
 </fieldset>

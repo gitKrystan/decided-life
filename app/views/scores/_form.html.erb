@@ -7,7 +7,7 @@
                                   class: "dec-numbers-only",
                                   id: "score_amount_#{criterium.id}_#{option.id}" %> -->
       <%= score_fields.collection_select :bin_id,
-                                         criterium.bins, :id,
+                                         criterium.bins.order(:score), :id,
                                          :select_description,
                                          {include_blank: true},
                                          {id: "score_amount_#{criterium.id}_#{option.id}"} %>

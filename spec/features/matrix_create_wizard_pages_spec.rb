@@ -49,6 +49,19 @@ feature 'Adding criteria: ' do
     expect(page).to have_content('Test Criterium')
   end
 
+  scenario 'Adds additional criterium parameters if desired' do
+    create :option, matrix: test_matrix
+    fill_in 'matrix_criteria_attributes_0_name', with: 'Test Criterium'
+    select '4', from: 'matrix_criteria_attributes_0_importance'
+    fill_in 'matrix_criteria_attributes_0_bins_attributes_2_description',
+            with: 'barely acceptable'
+    click_button 'Continue'
+    click_link('skip this step')
+    expect(page).to have_content('Test Criterium')
+    expect(page).to have_content('2: barely acceptable')
+    expect(page).to have_content('100')
+  end
+
   scenario 'Does not create criteria when no criterium is added' do
     click_button 'Continue'
     expect(page).to have_content('No criteria have been added.')
