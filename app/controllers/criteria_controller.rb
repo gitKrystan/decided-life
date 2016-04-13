@@ -37,7 +37,9 @@ class CriteriaController < MatricesChildrenController
   private
 
   def criterium_params
-    params.require(:criterium).permit(:name, :importance)
+    bin_attributes = [:id, :score, :description]
+    params.require(:criterium).permit(:name, :importance,
+                                      bins_attributes: bin_attributes)
   end
 
   def set_criterium
