@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 feature 'Scoring a Matrix:' do
-  given(:test_user) { create :confirmed_user }
-  given(:test_matrix) { create :matrix, owner: test_user }
+  given!(:test_user) { create :confirmed_user }
+  given!(:test_matrix) { create :matrix, owner: test_user }
   given!(:test_criterium) { create :criterium, matrix: test_matrix }
   given!(:test_option) { create :option, matrix: test_matrix }
   given!(:test_select) { "score_amount_#{test_criterium.id}_#{test_option.id}" }

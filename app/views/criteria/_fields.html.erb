@@ -1,0 +1,15 @@
+<div class="field">
+  <%= f.label :name, class: "control-label" %>
+  <div class="dec-input-wrapper">
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+</div>
+<div class="field">
+  <%= f.label :importance, class: "control-label" %>
+  <div class="dec-input-wrapper">
+    <%= f.select :importance, importance_options(f), class: "form-control" %>
+  </div>
+</div>
+<%= f.fields_for :bins, score_bins(f) do |bin| %>
+  <%= render 'bins/fields', f: bin %>
+<% end %>

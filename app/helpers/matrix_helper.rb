@@ -31,4 +31,9 @@ module MatrixHelper
     options.unshift(["#{default}: #{importances[default]}", default])
     options_for_select options
   end
+
+  def score_bins(f)
+    ordered_bins = f.object.bins.order(:score)
+    ordered_bins.any? ? ordered_bins : nil
+  end
 end

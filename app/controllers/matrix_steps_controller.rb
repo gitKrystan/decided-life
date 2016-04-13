@@ -27,14 +27,17 @@ class MatrixStepsController < MatricesChildrenController
   private
 
   def matrix_params
-    params.require(:matrix)
-          .permit(:name,
-                  criteria_attributes: [:id, :name, :importance, :_destroy],
-                  options_attributes: [:id, :name, :_destroy])
+    bin_attributes = [:id, :score, :description]
+    criterium_attributes = [:id, :name, :importance, :_destroy,
+                            bins_attributes: bin_attributes]
+    option_attributes = [:id, :name, :_destroy]
+    params.require(:matrix).permit(:name,
+                                   criteria_attributes: criterium_attributes,
+                                   options_attributes: option_attributes)
   end
 
   def finish_wizard_path
-    @matrix
+    edit_matrix_path @matrix
   end
 
   def update_association_and_set_notice(association_symbol)
