@@ -1,14 +1,14 @@
 <div class="jumbotron">
   <h1>Life is full of tough decisions.</h1>
   <p>
-    Decision matrices allow people and teams to choose wisely based on priorities and values.
+    Decision matrices help people and teams choose wisely based on priorities and values.
   </p>
+  <%= link_to 'Click here to start a new decision', new_matrix_path, id: 'new-matrix', class: 'btn btn-success btn-lg btn-block' %>
 </div>
 
-<%= link_to 'New Matrix', new_matrix_path, id: 'new-matrix', class: 'btn btn-primary' %>
-
 <% if @matrices.any? %>
-<ul class="nav nav-pills nav-stacked">
+<h5>Edit an existing matrix:</h5>
+<ul class="nav nav-pills nav-stacked col-sm-6">
   <% @matrices.each do |matrix| %>
     <% if matrix_owner?(matrix) %>
       <li><%= link_to matrix.name, edit_matrix_path(matrix) %></li>

@@ -5,4 +5,17 @@
     font-family: $headings-font-family;
     font-weight: 300;
   }
+
+  i {
+    color: $navbar-inverse-link-color;
+
+    &:hover {
+      color: $navbar-inverse-link-hover-color
+    }
+  }
+
+  .navbar-toggle {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }

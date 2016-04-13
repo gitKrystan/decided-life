@@ -2,7 +2,6 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 $dec-gray: #7f8c8d;
-$dec-navbar-bg: #34495e;
 
 $gray-base:              darken($dec-gray, 45%) !default;
 $gray-darker:            darken($dec-gray, 30%) !default;
@@ -11,8 +10,8 @@ $gray:                   darken($dec-gray, 15%) !default;
 $gray-light:             #95a5a6 !default;
 $gray-lighter:           #ecf0f1 !default;
 
-$brand-primary:         #47B39D !default;
-$brand-success:         #B05F6D !default;
+$brand-primary:         #34495e !default;
+$brand-success:         #1abc9c !default;
 $brand-info:            #462446 !default;
 $brand-warning:         #FFC153 !default;
 $brand-danger:          #EB6B56 !default;
@@ -42,14 +41,15 @@ $navbar-height:                    44px !default;
 //=== Inverted navbar
 // Reset inverted navbar basics
 $navbar-inverse-color:                      $gray-light !default;
-$navbar-inverse-bg:                         $dec-navbar-bg !default;
+$navbar-inverse-bg:                         $brand-primary !default;
 $navbar-inverse-border:                     transparent !default;
 
 // Inverted navbar links
-$navbar-inverse-link-color:                 lighten($brand-primary, 45%) !default;
+$navbar-inverse-link-color:                 lighten($brand-primary, 60%) !default;
 $navbar-inverse-link-hover-color:           #fff !default;
 $navbar-inverse-link-hover-bg:              transparent !default;
 $navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color !default;
 $navbar-inverse-link-active-bg:             lighten($navbar-inverse-bg, 10%) !default;
 $navbar-inverse-link-disabled-color:        #444 !default;
 $navbar-inverse-link-disabled-bg:           transparent !default;
+$navbar-inverse-toggle-icon-bar-bg:         $navbar-inverse-link-color !default;
