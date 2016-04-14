@@ -37,22 +37,3 @@
     </tbody>
   </table>
 </div>
-
-<% if view == 'edit' %>
-  <%= link_to 'View Your Results!', @matrix, class: 'btn btn-block btn-lg btn-primary', id: 'view-results' %>
-<% else %>
-  <% if current_matrix_owner? %>
-    <%= form_tag edit_matrix_path(@matrix), method: 'get', id: 'params-to-send' do %>
-      <%= hidden_field_tag :sort_options_by, options_sort_method %>
-      <%= hidden_field_tag :options_direction, options_sort_direction %>
-      <% if params[:sort_by_criterium] %>
-        <%= hidden_field_tag :sort_by_criterium, params[:sort_by_criterium] %>
-      <% end %>
-      <%= submit_tag 'Edit matrix', name: nil, id: 'edit-matrix' %>
-    <% end %>
-  <% else %>
-    <p>
-      Read only. Log in as the matrix owner to edit.
-    </p>
-  <% end %>
-<% end %>

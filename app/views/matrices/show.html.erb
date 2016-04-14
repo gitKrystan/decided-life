@@ -1,5 +1,17 @@
 <% header @matrix.name %>
 
+<%= render 'layouts/progress', percent: 100 %>
+
+<div class="dec-form-description">
+  <% if current_matrix_owner? %>
+    <%= link_to 'Edit this matrix', edit_matrix_path(@matrix), id: 'edit-matrix' %>
+  <% else %>
+    <p>
+      Read only. Log in as the matrix owner to edit.
+    </p>
+  <% end %>
+</div>
+
 <div id="matrix">
   <%= render 'matrix', view: 'show' %>
 </div>
