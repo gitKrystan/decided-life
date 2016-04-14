@@ -10,11 +10,7 @@
 <h5>Edit an existing matrix:</h5>
 <ul class="nav nav-pills nav-stacked col-sm-6">
   <% @matrices.each do |matrix| %>
-    <% if matrix_owner?(matrix) %>
-      <li><%= link_to matrix.name, edit_matrix_path(matrix) %></li>
-    <% else %>
-      <li><%= link_to matrix.name, matrix %></li>
-    <% end %>
+    <li><%= link_to matrix.name, matrix %></li>
   <% end %>
 </ul>
 <% else %>
