@@ -68,15 +68,28 @@ class Matrix < ActiveRecord::Base
     sorted_options
   end
 
-  def options_by_score
-    options_by('total_score', 'desc', nil)
-  end
-
   def total_criteria_importance
     criteria.reduce(0) { |a, e| a + e.importance }
   end
 
+  def option_ranks
+    sorted_options = options_by('total_score', 'desc', nil)
+    score_hash = {}
+    latest_score = 0
+    latest_rank = 0
+    sorted_options.each do |option|
+      latest_rank += 1 unless option.total_score == latest_score
+      latest_score = option.total_score
+      score_hash[option.id] = latest_rank
+    end
+    score_hash
+  end
+
   def winning_option
-    options_by_score.first
+    winners = []
+    option_ranks.each do |option_id, rank|
+      winners << Option.find(option_id) if rank == 1
+    end
+    winners
   end
 end

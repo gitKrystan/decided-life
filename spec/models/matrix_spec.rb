@@ -36,26 +36,31 @@ RSpec.describe Matrix, type: :model do
     end
   end
 
-  describe '.options_by_score' do
-    it 'returns the matrix options ordered by total score' do
+  describe '.option_ranks' do
+    it 'returns the options with their rankings' do
       test_matrix = create :matrix
       test_criterium = create :criterium, matrix: test_matrix
       worst_option = create :option, matrix: test_matrix
       middle_option = create :option, matrix: test_matrix
+      middle_option_tie = create :option, matrix: test_matrix
       best_option = create :option, matrix: test_matrix
       create :score, criterium: test_criterium, option: best_option,
                      bin: test_criterium.bins.last
       create :score, criterium: test_criterium, option: middle_option,
                      bin: test_criterium.bins.second
+      create :score, criterium: test_criterium, option: middle_option_tie,
+                     bin: test_criterium.bins.second
       create :score, criterium: test_criterium, option: worst_option,
                      bin: test_criterium.bins.first
-      expect(test_matrix.options_by_score)
-        .to eq [best_option, middle_option, worst_option]
+      expect(test_matrix.option_ranks).to eq(best_option.id => 1,
+                                             middle_option.id => 2,
+                                             middle_option_tie.id => 2,
+                                             worst_option.id => 3)
     end
   end
 
   describe '.winning_option' do
-    it 'returns the option with the highest total score' do
+    it 'returns the option(s) with the highest total score' do
       test_matrix = create :matrix
       test_criterium = create :criterium, matrix: test_matrix
       worst_option = create :option, matrix: test_matrix
@@ -64,7 +69,7 @@ RSpec.describe Matrix, type: :model do
                      bin: test_criterium.bins.last
       create :score, criterium: test_criterium, option: worst_option,
                      bin: test_criterium.bins.first
-      expect(test_matrix.winning_option).to eq best_option
+      expect(test_matrix.winning_option).to eq [best_option]
     end
   end
 end
