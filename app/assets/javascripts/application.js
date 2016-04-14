@@ -19,7 +19,7 @@
 //= require_tree .
 
 $(document).on('page:fetch', function() {
-  $('#content').fadeOut('slow');
+  $('#content').fadeOut('fast');
 });
 
 $(document).on('page:restore', function() {
