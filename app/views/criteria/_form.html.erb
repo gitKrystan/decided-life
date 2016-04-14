@@ -2,7 +2,10 @@
 <%= form_for [@matrix, @criterium] do |f| %>
   <%= render 'layouts/errors', object: @criterium %>
 
-  <%= render 'fields', f: f %>
+  <div class="row">
+    <%= render 'fields', f: f %>
+  </div>
+
   <div class="actions">
     <%= f.submit id: 'save-criterium', class: "btn btn-success" %>
   </div>

@@ -59,7 +59,8 @@ class MatricesController < CrudController
   end
 
   def set_criteria
-    @criteria = @matrix.criteria.order(:name) # TODO: order by user sequence
+    @criteria = @matrix.criteria.sort_by(&:weight).reverse
+    # TODO: order by user selection
   end
 
   def set_options

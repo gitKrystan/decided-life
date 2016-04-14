@@ -1,28 +1,25 @@
-<th>
-  <div class="">
-    <% if view == 'edit' %>
+<th class="dec-criterium-headers">
+  <% if view == 'edit' %>
+    <div class="dec-matrix-edit-buttons">
       <%= link_to edit_matrix_criterium_path(@matrix, criterium),
                   id: "edit-criterium-#{criterium.id}",
                   class: 'btn-circle' do %>
-        <%= fa_stacked_icon "pencil inverse", base: "circle" %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
       <% end %>
       <%= link_to matrix_criterium_path(@matrix, criterium),
                   data: { confirm: 'You sure?',
                           method: 'delete'},
                   id: "delete-criterium-#{criterium.id}",
                   class: 'btn-circle' do %>
-        <%= fa_stacked_icon "times inverse", base: "circle" %>
+        <i class="fa fa-times" aria-hidden="true"></i>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
   <div class="dec-table-th">
     <%= sort_options "criterium_score", criterium_id: criterium.id,
                      title: criterium.name  %>
   </div>
   <div class="dec-table-score-info">
-    <% if criterium == @criteria.first %>
-    Influence:
-    <% end %>
     <%= number_to_percentage criterium.weight, precision: 1 %>
   </div>
 </th>

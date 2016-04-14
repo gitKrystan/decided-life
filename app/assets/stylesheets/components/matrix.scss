@@ -16,6 +16,7 @@
 
 .dec-table-score-info {
   @extend %right-justified-numbers;
+  float: right;
 }
 
 .dec-matrix > thead > tr > th {
@@ -23,5 +24,9 @@
 }
 
 .dec-table-th {
-  padding-bottom: 15px;
+  float: left;
+}
+
+.dec-matrix-edit-buttons {
+  text-align: right;
 }

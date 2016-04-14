@@ -2,19 +2,18 @@
 
 <%= render 'layouts/progress', percent: 90 %>
 
-<ul class="list-inline">
-  <li><%= link_to 'Presentation mode', @matrix %></li>
-  <li>
-    <a id='show-matrix-form' data-toggle="collapse" href="#editMatrixName" aria-expanded="false" aria-controls="editMatrixName">
-      Edit details
-    </a>
-  </li>
-</ul>
-
-
+<a id='show-matrix-form' data-toggle="collapse" href="#editMatrixName" aria-expanded="false" aria-controls="editMatrixName">
+  Edit details
+</a>
 <div class="collapse" id="editMatrixName">
-    <%= render 'form', edit: true %>
+  <%= render 'form', edit: true %>
 </div>
 
+<h5><b>Rate Your Options</b></h5>
+<div class="dec-form-description">
+  Select a rating for every criterium/option intersection. Percentages next to criteria reflect the weight that will be applied to ratings in that criterium.
+</div>
 
 <%= render 'matrix', view: 'edit' %>
+
+<%= link_to 'View Your Results!', @matrix, class: 'btn btn-block btn-lg btn-primary' %>
