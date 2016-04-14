@@ -14,6 +14,8 @@
   Select a rating for every criterium/option intersection. Percentages next to criteria reflect the weight that will be applied to ratings in that criterium.
 </div>
 
-<%= render 'matrix', view: 'edit' %>
+<div id="matrix">
+  <%= render 'matrix', view: 'edit' %>
+</div>
 
 <%= link_to 'View Your Results!', @matrix, class: 'btn btn-block btn-lg btn-primary' %>

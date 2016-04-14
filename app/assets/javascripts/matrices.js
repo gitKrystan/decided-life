@@ -18,9 +18,4 @@ $(function() {
   $(document).on('click', '.dec-bin-toggle', function() {
     $(this).next().collapse('toggle');
   });
-
-  // $(document).on('click', '.add_fields[data-association="criterium"]', function() {
-  //   var binCollapseCount = $('.dec-bin-collapse').length;
-  //   console.log(binCollapseCount);
-  // });
 });

@@ -18,6 +18,11 @@
 //= require cocoon
 //= require_tree .
 
+$(document).on('click', '.dec-sort-vert', function() {
+  $.getScript(this.href);
+  return false;
+});
+
 $(function() {
   $(".alert-dismissible").fadeTo(4000, 500).animate({
     right: -parseInt($(this).width())
