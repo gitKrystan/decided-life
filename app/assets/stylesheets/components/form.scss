@@ -128,3 +128,7 @@ select {
   @extend .has-error;
 }
 // scss-lint:enable PlaceholderInExtend
+
+.dec-form-description {
+  margin-bottom: 12.5px;
+}

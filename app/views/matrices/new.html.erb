@@ -1,5 +1,22 @@
-<% header 'New Matrix' %>
+<% header 'Name Your Decision' %>
 
-<%= render 'layouts/progress', percent: 0 %>
+<%= render 'layouts/progress', percent: 5 %>
+
+<h5>What is the question you are trying to answer?</h5>
+Examples:
+<div class="row dec-form-description">
+  <div class="col-sm-6">
+    <ul>
+      <li>What should I eat for dinner?</li>
+      <li>Who should I appoint to the Supreme Court?</li>
+    </ul>
+  </div>
+  <div class="col-sm-6">
+    <ul>
+      <li>The Big Dig: Go or No-Go?</li>
+      <li>How should I prioritize my bucket list?</li>
+    </ul>
+  </div>
+</div>
 
 <%= render 'form', edit: false %>
