@@ -59,7 +59,7 @@ RSpec.describe Matrix, type: :model do
     end
   end
 
-  describe '.winning_option' do
+  describe '.winning_options' do
     it 'returns the option(s) with the highest total score' do
       test_matrix = create :matrix
       test_criterium = create :criterium, matrix: test_matrix
@@ -69,7 +69,7 @@ RSpec.describe Matrix, type: :model do
                      bin: test_criterium.bins.last
       create :score, criterium: test_criterium, option: worst_option,
                      bin: test_criterium.bins.first
-      expect(test_matrix.winning_option).to eq [best_option]
+      expect(test_matrix.winning_options).to eq [best_option]
     end
   end
 end

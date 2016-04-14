@@ -15,6 +15,16 @@
           <i class="fa fa-times" aria-hidden="true"></i>
         <% end %>
       </div>
+    <% else %>
+      <% if @matrix.winning_options.include? option %>
+        <div class="collapse dec-result" id="winner">
+          <% if @matrix.tie? %>
+            <i class="fa fa-question fa-2x dec-tie" aria-hidden="true"></i>
+          <% else %>
+            <i class="fa fa-check fa-2x dec-winner" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </td>
   <% unless view == 'edit' %>

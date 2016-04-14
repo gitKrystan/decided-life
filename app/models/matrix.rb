@@ -85,11 +85,15 @@ class Matrix < ActiveRecord::Base
     score_hash
   end
 
-  def winning_option
+  def winning_options
     winners = []
     option_ranks.each do |option_id, rank|
       winners << Option.find(option_id) if rank == 1
     end
     winners
+  end
+
+  def tie?
+    winning_options.length > 1
   end
 end

@@ -30,3 +30,15 @@
 .dec-matrix-edit-buttons {
   text-align: right;
 }
+
+.dec-result {
+  font-size: 80%;
+}
+
+.dec-winner {
+  color: $brand-success;
+}
+
+.dec-tie {
+  color: $brand-warning;
+}

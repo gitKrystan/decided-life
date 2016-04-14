@@ -11,11 +11,15 @@ $(document).on('change', tableFormInputs, function() {
 //   return (/[\d]/.test(character));
 // });
 
+$(document).on('click', '.dec-bin-toggle', function() {
+  $(this).next().collapse('toggle');
+});
+
 $(function() {
   $('.dec-table-form input[type=submit]').remove();
   $(tableFormInputs).first().focus();
 
-  $(document).on('click', '.dec-bin-toggle', function() {
-    $(this).next().collapse('toggle');
-  });
+  setTimeout(function() {
+    $('.dec-result').collapse('toggle');
+  }, 500);
 });
