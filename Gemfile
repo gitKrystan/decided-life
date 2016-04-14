@@ -42,6 +42,8 @@ gem 'devise'
 gem 'wicked'
 # Nested forms
 gem 'cocoon'
+# Clone records
+gem 'amoeba'
 
 group :development, :test do
   gem 'rspec-rails'

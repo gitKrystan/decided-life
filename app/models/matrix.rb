@@ -1,6 +1,10 @@
 Hash.include CoreExtensions::Hash::Attributes::CleanOrEmpty
 
 class Matrix < ActiveRecord::Base
+  amoeba do
+    enable
+  end
+
   belongs_to :owner, class_name: 'User'
   # owner(force_reload = false)
   # owner=(associate)
