@@ -1,4 +1,8 @@
-<fieldset>
-  <%= render 'options/fields', f: f %>
-</fieldset>
-<%= link_to_remove_association 'remove option', f %>
+<div class="well dec-association-fields">
+  <%= link_to_remove_association f, { wrapper_class: 'well' } do %>
+    <i class="fa fa-close fa-lg"></i>
+  <% end %>
+  <fieldset class="nested-fields">
+    <%= render 'options/fields', f: f %>
+  </fieldset>
+</div>

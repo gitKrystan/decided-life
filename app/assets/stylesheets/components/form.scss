@@ -12,14 +12,6 @@ form {
   @include make-sm-column(6);
 }
 
-.new_matrix,
-.edit_matrix,
-.new_criterium,
-.edit_criterium,
-.new_option,
-.edit_option {
-  @extend .well;
-}
 // scss-lint:enable SelectorFormat
 
 .form-additional-options {
@@ -113,7 +105,7 @@ select {
   @extend .btn;
   @extend .btn-link;
   border-radius: 100%;
-  color: $link-color;
+  color: $gray-light;
   padding-left: 0;
   padding-right: 0;
   height: 36px;
@@ -128,3 +120,29 @@ select {
   @extend .has-error;
 }
 // scss-lint:enable PlaceholderInExtend
+
+.dec-form-description {
+  margin-bottom: 12.5px;
+}
+
+
+.dec-association-fields {
+  position: relative;
+
+  .remove_fields {
+    @extend .btn;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    z-index: 1000;
+    color: $text-color;
+
+    &:hover {
+      color: $brand-danger;
+    }
+  }
+}
+
+.dec-after-form {
+  margin-top: 15px;
+}

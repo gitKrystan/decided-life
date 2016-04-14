@@ -1,7 +1,9 @@
-<div class="field">
-  <%= f.label :description, f.object.score, class: "control-label" %>
-  <div class="dec-input-wrapper">
+<div class="form-horizontal">
+  <div class="form-group">
     <%= f.hidden_field :score %>
-    <%= f.text_field :description, class: "form-control" %>
+    <%= f.label :description, f.object.score, class: "control-label col-xs-1" %>
+    <div class="col-xs-11">
+      <%= f.text_field :description, class: "form-control" %>
+    </div>
   </div>
 </div>

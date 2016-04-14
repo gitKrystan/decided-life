@@ -11,7 +11,7 @@ feature 'Editing a Matrix:' do
 
     scenario 'Edits a Matrix when all validated fields are entered' do
       visit matrix_path(test_matrix)
-      click_link 'edit-matrix'
+      click_on 'edit-matrix'
       click_link 'show-matrix-form'
       fill_in 'Name', with: 'Updated Matrix Name'
       click_button 'save-matrix'

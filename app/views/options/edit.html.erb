@@ -1,3 +1,9 @@
-<h1>Edit <%= @matrix.name %>: <%= @option.name %></h1>
+<% header @matrix.name %>
 
-<%= render 'form' %>
+<h5>Edit Option: <%= @option.name %></h5>
+
+<div class="well">
+  <%= render 'form' %>
+</div>
+
+<%= link_to 'Back', edit_matrix_path(@matrix) %>

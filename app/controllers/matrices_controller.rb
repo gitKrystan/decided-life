@@ -59,7 +59,8 @@ class MatricesController < CrudController
   end
 
   def set_criteria
-    @criteria = @matrix.criteria.order(:name) # TODO: order by user sequence
+    @criteria = @matrix.criteria.sort_by(&:weight).reverse
+    # TODO: order by user selection
   end
 
   def set_options
@@ -69,11 +70,19 @@ class MatricesController < CrudController
   end
 
   def options_sort_method
-    params[:sort_options_by] || 'name'
+    if action_name == 'show'
+      params[:sort_options_by] || 'total_score'
+    else
+      params[:sort_options_by] || 'name'
+    end
   end
 
   def options_sort_direction
-    params[:options_direction] || 'asc'
+    if action_name == 'show'
+      params[:options_direction] || 'desc'
+    else
+      params[:options_direction] || 'asc'
+    end
   end
 
   def options_sort_criterium

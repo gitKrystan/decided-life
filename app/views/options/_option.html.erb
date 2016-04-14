@@ -5,16 +5,26 @@
         <%= link_to edit_matrix_option_path(@matrix, option),
                     id: "edit-option-#{option.id}",
                     class: 'btn-circle' do %>
-          <%= fa_stacked_icon "pencil inverse", base: "circle" %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
         <% end %>
         <%= link_to matrix_option_path(@matrix, option),
                     data: { confirm: 'You sure?',
                             method: 'delete'},
                     id: "delete-option-#{option.id}",
                     class: 'btn-circle' do %>
-          <%= fa_stacked_icon "times inverse", base: "circle" %>
+          <i class="fa fa-times" aria-hidden="true"></i>
         <% end %>
       </div>
+    <% else %>
+      <% if @matrix.winning_options.include? option %>
+        <div class="collapse dec-result" id="winner">
+          <% if @matrix.tie? %>
+            <i class="fa fa-question fa-2x dec-tie" aria-hidden="true"></i>
+          <% else %>
+            <i class="fa fa-check fa-2x dec-winner" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </td>
   <% unless view == 'edit' %>

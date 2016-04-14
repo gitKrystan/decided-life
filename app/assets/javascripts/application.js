@@ -17,3 +17,24 @@
 //= require turbolinks
 //= require cocoon
 //= require_tree .
+
+$(document).on('page:fetch', function() {
+  $('#content').fadeOut('fast');
+});
+
+$(document).on('page:restore', function() {
+  $('#content').fadeIn('slow');
+});
+
+$(document).on('click', '.dec-sort-vert', function() {
+  $.getScript(this.href);
+  return false;
+});
+
+$(function() {
+  $(".alert-dismissible").fadeTo(4000, 500).animate({
+    right: -parseInt($(this).width())
+  }, 1500, function(){
+    $(".alert-dismissible").alert('close');
+  });
+});

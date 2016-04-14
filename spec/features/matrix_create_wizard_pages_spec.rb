@@ -16,7 +16,7 @@ feature 'Creating a new Matrix:' do
   end
 
   scenario 'Moves to Add Criteria step' do
-    expect(page).to have_content('Add Criteria')
+    expect(page).to have_content('Add Another Criterium')
   end
 end
 
@@ -44,7 +44,7 @@ feature 'Adding criteria: ' do
     fill_in 'matrix_criteria_attributes_0_name', with: 'Test Criterium'
     click_button 'Continue'
     expect(page).to have_content('Your criteria have been updated.')
-    expect(page).to have_content('Add Options')
+    expect(page).to have_content('Add Another Option')
     click_link('skip this step')
     expect(page).to have_content('Test Criterium')
   end
@@ -65,7 +65,7 @@ feature 'Adding criteria: ' do
   scenario 'Does not create criteria when no criterium is added' do
     click_button 'Continue'
     expect(page).to have_content('No criteria have been added.')
-    expect(page).to have_content('Add Options')
+    expect(page).to have_content('Add Another Option')
   end
 
   scenario 'Returns an error when fields are incorrectly entered' do

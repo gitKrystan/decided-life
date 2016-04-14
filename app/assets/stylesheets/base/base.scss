@@ -1,0 +1,22 @@
+%ghost-primary {
+  border: 2px solid $brand-primary;
+  background-color: transparent;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: $navbar-height * 2;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $navbar-height;
+}
