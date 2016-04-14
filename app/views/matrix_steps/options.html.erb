@@ -1,6 +1,43 @@
-<% header "Add Options" %>
+<% header @matrix.name %>
 
 <%= render 'layouts/progress', percent: 45 %>
+
+<h5><b>Step 3:</b> Add Your Options</h5>
+<div class="dec-form-description">
+  List all of your options. Eliminate any obvious non-starters.
+  For example:
+  <div class="row">
+    <div class="col-sm-6">
+      <ul>
+        <li>The Big Dig: Go or No-Go?<br>
+          <span class="badge">Go</span>
+          <span class="badge">No-Go</span>
+        </li>
+        <li>What should we eat for dinner?<br>
+          <span class="badge">Soycurl Fajita Burrito</span>
+          <span class="badge">Minestrone</span>
+          <span class="badge">Tempeh Reuben</span>
+          <span class="badge">Lemon Kale Risotto</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      <ul>
+        <li>How should I prioritize my bucket list?<br>
+          <span class="badge">Skydiving</span>
+          <span class="badge">Spelunking</span>
+          <span class="badge">Spain</span>
+        </li>
+        <li>Who should I nominate for the Supreme Court?<br>
+          <span class="badge">Sandra Day O'Connor</span>
+          <span class="badge">Sonia Sotomayor</span>
+          <span class="badge">Elena Kagan</span>
+          <span class="badge">The Notorious RBG</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <%= render layout: 'form' do |f| %>
   <div id="options">
@@ -8,7 +45,7 @@
     <%= render 'option_fields', f: option %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association 'add option', f, :options %>
+      <%= link_to_add_association 'Add Another Option', f, :options, class: 'btn btn-default' %>
     </div>
   </div>
 <% end %>

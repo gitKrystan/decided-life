@@ -19,5 +19,6 @@
 
 .alert-tip {
   @extend %ghost-primary;
+  margin-top: 10px;
   color: $text-color;
 }
