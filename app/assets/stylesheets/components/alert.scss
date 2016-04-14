@@ -1,7 +1,23 @@
+.alert-dismissible {
+  position: absolute;
+  right: 0;
+}
+
 .alert-alert {
   @extend .alert-warning;
 }
 
 .alert-notice {
   @extend .alert-info;
+  background-color: $gray-lighter;
+  color: $text-color;
+
+  .close {
+    color: $text-color;
+  }
+}
+
+.alert-tip {
+  @extend %ghost-primary;
+  color: $text-color;
 }

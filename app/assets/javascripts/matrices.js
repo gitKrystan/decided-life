@@ -14,4 +14,13 @@ $(document).on('change', tableFormInputs, function() {
 $(function() {
   $('.dec-table-form input[type=submit]').remove();
   $(tableFormInputs).first().focus();
+
+  $(document).on('click', '.dec-bin-toggle', function() {
+    $(this).next().collapse('toggle');
+  });
+
+  // $(document).on('click', '.add_fields[data-association="criterium"]', function() {
+  //   var binCollapseCount = $('.dec-bin-collapse').length;
+  //   console.log(binCollapseCount);
+  // });
 });

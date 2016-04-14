@@ -1,3 +1,7 @@
 .btn {
   box-shadow: none;
 }
+
+.btn-default {
+  @extend %ghost-primary;
+}

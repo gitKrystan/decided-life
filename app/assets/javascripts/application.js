@@ -17,3 +17,11 @@
 //= require turbolinks
 //= require cocoon
 //= require_tree .
+
+$(function() {
+  $(".alert-dismissible").fadeTo(4000, 500).animate({
+    right: -parseInt($(this).width())
+  }, 1500, function(){
+    $(".alert-dismissible").alert('close');
+  });
+});

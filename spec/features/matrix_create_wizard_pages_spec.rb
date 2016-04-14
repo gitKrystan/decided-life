@@ -16,7 +16,7 @@ feature 'Creating a new Matrix:' do
   end
 
   scenario 'Moves to Add Criteria step' do
-    expect(page).to have_content('Add Criteria')
+    expect(page).to have_content('Add Criterium')
   end
 end
 

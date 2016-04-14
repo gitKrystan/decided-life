@@ -1,14 +1,56 @@
-<% header "Add Criteria" %>
+<% header @matrix.name %>
 
 <%= render 'layouts/progress', percent: 25 %>
 
+<h5><b>Step 2:</b> Add Your Decision Criteria</h5>
+<div class="dec-form-description">
+  <b>First,</b> brainstorm the decision criteria that are most important. Narrow this list down to a manageable size.<br><br>
+  <div class="alert alert-tip" >
+    <b>NOTE:</b> It is important that your criteria be worded such an option most aligned with the criterium description is the option you would pick based on that criterium.
+  </div>
+  For example:
+  <div class="row">
+    <div class="col-sm-6">
+      <ul>
+        <li>The Big Dig: Go or No-Go?<br>
+          <span class="badge">Affordability</span>
+          <span class="badge">Traffic Improvement</span>
+          <span class="badge">Benefit to Society</span>
+        </li>
+        <li>What should we eat for dinner?<br>
+          <span class="badge">Flavor</span>
+          <span class="badge">Time to Table</span>
+          <span class="badge">Healthfulness</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      <ul>
+        <li>How should I prioritize my bucket list?<br>
+          <span class="badge">Low Risk</span>
+          <span class="badge">Low Cost</span>
+          <span class="badge">Awesomeness</span>
+        </li>
+        <li>Who should I nominate for the Supreme Court?<br>
+          <span class="badge">Experience</span>
+          <span class="badge">Political Alignment</span>
+          <span class="badge">Chance of Being Approved</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="dec-form-description">
+  <b>Then,</b> for each criterium, select its relative importance. Each criterium will affect your decision outcome based on its importance.<br>
+</div>
+
 <%= render layout: 'form' do |f| %>
   <div id="criteria">
-    <%= f.fields_for :criteria do |criterium| %>
-      <%= render 'criterium_fields', f: criterium %>
+    <%= f.fields_for :criteria do |cf| %>
+      <%= render 'criterium_fields', f: cf %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association 'add criterium', f, :criteria %>
+      <%= link_to_add_association 'Add Criterium', f, :criteria, class: 'btn btn-default' %>
     </div>
   </div>
 <% end %>
