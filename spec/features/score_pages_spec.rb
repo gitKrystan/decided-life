@@ -18,7 +18,7 @@ feature 'Scoring a Matrix:' do
     visit edit_matrix_path(test_matrix)
     select test_selection.select_description, from: test_select
     expect(page.find_by_id(test_select).value).to eq test_selection.id.to_s
-    click_link('View Your Results')
+    click_on('view-results')
     expect(page).to have_content(test_selection.score)
   end
 

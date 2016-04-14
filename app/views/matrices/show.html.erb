@@ -1,20 +1,5 @@
 <% header @matrix.name %>
 
-<% if current_matrix_owner? %>
-  <ul class="list-inline">
-    <li>
-      <%= link_to edit_matrix_path(@matrix), id: 'edit-matrix' do %>
-        Edit this matrix
-      <% end %>
-    </li>
-  </ul>
-
-<% else %>
-  <p>
-    Read only. Log in as the matrix owner to edit.
-  </p>
-<% end %>
-
 <div id="matrix">
   <%= render 'matrix', view: 'show' %>
 </div>
