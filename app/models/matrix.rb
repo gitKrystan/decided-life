@@ -68,6 +68,10 @@ class Matrix < ActiveRecord::Base
     sorted_options
   end
 
+  def options_by_score
+    options_by('total_score', 'desc', nil)
+  end
+
   def total_criteria_importance
     criteria.reduce(0) { |a, e| a + e.importance }
   end

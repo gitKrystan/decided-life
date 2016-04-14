@@ -35,4 +35,22 @@ RSpec.describe Matrix, type: :model do
       expect(test_matrix.total_criteria_importance).to equal 8
     end
   end
+
+  describe '.options_by_score' do
+    it 'returns the matrix options ordered by total score' do
+      test_matrix = create :matrix
+      test_criterium = create :criterium, matrix: test_matrix
+      worst_option = create :option, matrix: test_matrix
+      middle_option = create :option, matrix: test_matrix
+      best_option = create :option, matrix: test_matrix
+      create :score, criterium: test_criterium, option: best_option,
+                     bin: test_criterium.bins.last
+      create :score, criterium: test_criterium, option: middle_option,
+                     bin: test_criterium.bins.second
+      create :score, criterium: test_criterium, option: worst_option,
+                     bin: test_criterium.bins.first
+      expect(test_matrix.options_by_score)
+        .to eq [best_option, middle_option, worst_option]
+    end
+  end
 end
