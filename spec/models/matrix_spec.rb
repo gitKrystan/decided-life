@@ -53,4 +53,18 @@ RSpec.describe Matrix, type: :model do
         .to eq [best_option, middle_option, worst_option]
     end
   end
+
+  describe '.winning_option' do
+    it 'returns the option with the highest total score' do
+      test_matrix = create :matrix
+      test_criterium = create :criterium, matrix: test_matrix
+      worst_option = create :option, matrix: test_matrix
+      best_option = create :option, matrix: test_matrix
+      create :score, criterium: test_criterium, option: best_option,
+                     bin: test_criterium.bins.last
+      create :score, criterium: test_criterium, option: worst_option,
+                     bin: test_criterium.bins.first
+      expect(test_matrix.winning_option).to eq best_option
+    end
+  end
 end

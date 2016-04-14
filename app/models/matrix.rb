@@ -75,4 +75,8 @@ class Matrix < ActiveRecord::Base
   def total_criteria_importance
     criteria.reduce(0) { |a, e| a + e.importance }
   end
+
+  def winning_option
+    options_by_score.first
+  end
 end
