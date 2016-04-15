@@ -7,7 +7,7 @@
 </div>
 
 <div class="row" id="examples">
-  <%= render 'matrices_list', matrices: @my_matrices, heading: 'Your decisions:' %>
-  <%= render 'matrices_list', matrices: @krystan_matrices, heading: 'Example decisions:' %>
-  <%= render 'matrices_list', matrices: @other_matrices, heading: "Other users' decisions:" %>
+  <%= render 'matrices_list', matrices: @my_matrices, heading: 'Your decisions:', column_size: 4 %>
+  <%= render 'matrices_list', matrices: @krystan_matrices, heading: 'Example decisions:', column_size: 4 %>
+  <%= render 'matrices_list', matrices: @other_matrices, heading: "Other users' decisions:", column_size: 4 %>
 </div>
