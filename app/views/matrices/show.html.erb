@@ -14,6 +14,24 @@
   <% end %>
 </div>
 
+<% if @matrix.winner? %>
+  <h5><b>Winning Option:</b> <%= @matrix.winner_name %></h5>
+  <% if current_matrix_owner? %>
+    <p>
+      If you agree with this choice, you have made a decision! If not, re-evaulate your rankings, criteria, and criteria weighting.
+    </p>
+  <% end %>
+<% else %>
+  <% if @matrix.tie? %>
+    <h5>We have a tie!</h5>
+    <% if current_matrix_owner? %>
+      <p>
+        Please re-evaulate your rankings, criteria, and criteria weighting.
+      </p>
+    <% end %>
+  <% end %>
+<% end %>
+
 <div id="matrix">
   <%= render 'matrix', view: 'show' %>
 </div>
