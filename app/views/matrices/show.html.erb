@@ -39,3 +39,7 @@
 <div id="matrix">
   <%= render 'matrix', view: 'show' %>
 </div>
+
+<p>
+  This matrix was created by <%= @matrix.owner.name %>. <span class="pull-right"><%= link_to 'Create a new matrix!', new_matrix_path %></span>
+</p>
