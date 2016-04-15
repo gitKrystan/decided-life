@@ -37,6 +37,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    amoeba (3.0.0)
+      activerecord (>= 3.2.6)
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
@@ -223,6 +225,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amoeba
   bootstrap-sass (~> 3.3.6)
   byebug
   capybara

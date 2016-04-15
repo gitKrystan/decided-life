@@ -27,6 +27,7 @@ feature 'Viewing a Matrix:' do
     visit root_path
     click_link test_matrix.name
     expect(page).to have_content(test_matrix.name)
-    expect(current_path).to eq edit_matrix_path(test_matrix)
+    expect(page).to have_css('#edit-matrix')
+    expect(current_path).to eq matrix_path(test_matrix)
   end
 end

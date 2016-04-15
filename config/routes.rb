@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :matrix_steps, as: 'steps', only: [:index, :show, :update]
     resources :criteria, except: [:show, :index]
     resources :options, except: [:show, :index]
+    member do
+      post 'copy'
+    end
   end
 
   # The priority is based upon order of creation:

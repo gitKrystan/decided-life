@@ -1,4 +1,9 @@
 class Criterium < ActiveRecord::Base
+  amoeba do
+    enable
+    include_association :bins
+  end
+
   after_initialize :generate_bins
 
   belongs_to :matrix
@@ -9,7 +14,7 @@ class Criterium < ActiveRecord::Base
   # create_matrix!(attributes = {})
   validates :matrix, presence: true
 
-  has_many :bins, dependent: :destroy
+  has_many :bins, dependent: :destroy, inverse_of: :criterium
   # bins(force_reload = false)
   # bins<<(object, ...)
   # bins.delete(object, ...)

@@ -1,13 +1,14 @@
 class MatricesController < CrudController
   helper_method :options_sort_method, :options_sort_direction,
                 :options_sort_criterium
-  before_action :set_matrix, only: [:show, :edit, :update, :destroy]
+  before_action :set_matrix, only: [:show, :edit, :update, :destroy, :copy]
   before_action :set_criteria, only: [:show, :edit, :update]
   before_action :set_options, only: [:show, :edit, :update]
   before_action :authenticate_matrix_owner, only: [:edit, :update, :destroy]
 
   def index
-    @matrices = Matrix.order(created_at: :desc)
+    @my_matrices = Matrix.where(owner: current_user).order(created_at: :desc)
+    @other_matrices = Matrix.where.not(owner: current_user).order(created_at: :desc)
   end
 
   def show
@@ -44,6 +45,19 @@ class MatricesController < CrudController
     @matrix.destroy
     redirect_to matrices_path,
                 notice: "#{@matrix.name} was successfully deleted."
+  end
+
+  def copy
+    new_matrix = @matrix.amoeba_dup
+    new_matrix.owner = current_user
+    if new_matrix.save
+      flash[:notice] = "#{new_matrix.name} was successfully created."
+      redirect_to edit_matrix_path(new_matrix)
+    else
+      flash[:alert] = "Sorry, #{@matrix.name} could not be copied."
+      @matrix = new_matrix
+      render :show
+    end
   end
 
   private
