@@ -7,7 +7,7 @@
           <%= link_to matrix do %>
             <% if matrix.winner? %>
               <span class="dec-winner">
-                <i class="fa-li fa fa-check" aria-hidden="true"></i><%= matrix.name %>
+                <i class="fa-li fa fa-check" aria-hidden="true"></i><%= matrix.name %><br>
                 (winner: <%= matrix.winner_name %>)
               </span>
             <% else %>

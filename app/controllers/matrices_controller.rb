@@ -7,9 +7,12 @@ class MatricesController < CrudController
   before_action :authenticate_matrix_owner, only: [:edit, :update, :destroy]
 
   def index
-    @my_matrices = Matrix.where(owner: current_user).order(created_at: :desc)
-    @krystan_matrices = Matrix.where(owner_id: 1).order(created_at: :desc)
-    @other_matrices = Matrix.where.not(owner: current_user).order(created_at: :desc)
+    @my_matrices = Matrix.where(owner: current_user)
+                         .order(created_at: :desc).last(5)
+    @krystan_matrices = Matrix.where(owner_id: 1)
+                              .order(created_at: :desc).last(5)
+    @other_matrices = Matrix.where.not(owner: current_user)
+                            .order(created_at: :desc).last(5)
   end
 
   def show
