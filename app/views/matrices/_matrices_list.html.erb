@@ -1,0 +1,23 @@
+<% if matrices.any? %>
+  <div class="col-sm-6">
+    <h5><%= heading %></h5>
+    <ul class="nav nav-pills nav-stacked fa-ul">
+      <% matrices.each do |matrix| %>
+        <li>
+          <%= link_to matrix do %>
+            <% if matrix.winner? %>
+              <span class="dec-winner">
+                <i class="fa-li fa fa-check" aria-hidden="true"></i><%= matrix.name %>
+                (winner: <%= matrix.winner_name %>)
+              </span>
+            <% else %>
+              <span class="dec-tie">
+                <i class="fa-li fa fa-question" aria-hidden="true"></i>  <%= matrix.name %>
+              </span>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

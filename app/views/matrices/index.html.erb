@@ -6,13 +6,5 @@
   <%= link_to 'Click here to start a new decision', new_matrix_path, id: 'new-matrix', class: 'btn btn-success btn-lg btn-block' %>
 </div>
 
-<% if @matrices.any? %>
-<h5>Edit an existing matrix:</h5>
-<ul class="nav nav-pills nav-stacked col-sm-6">
-  <% @matrices.each do |matrix| %>
-    <li><%= link_to matrix.name, matrix %></li>
-  <% end %>
-</ul>
-<% else %>
-  <h1>Add a new Decision Matrix</h1>
-<% end %>
+<%= render 'matrices_list', matrices: @my_matrices, heading: 'Your decisions:' %>
+<%= render 'matrices_list', matrices: @other_matrices, heading: "Other users' decisions:" %>

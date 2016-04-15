@@ -3,6 +3,9 @@ Hash.include CoreExtensions::Hash::Attributes::CleanOrEmpty
 class Matrix < ActiveRecord::Base
   amoeba do
     enable
+    prepend name: 'Copy of '
+    include_association :criteria
+    include_association :options
   end
 
   belongs_to :owner, class_name: 'User'
@@ -13,7 +16,7 @@ class Matrix < ActiveRecord::Base
   # create_owner!(attributes = {})
   validates :owner, presence: true
 
-  has_many :criteria, dependent: :destroy
+  has_many :criteria, dependent: :destroy, inverse_of: :matrix
   # criteria(force_reload = false)
   # criteria<<(object, ...)
   # criteria.delete(object, ...)
@@ -36,7 +39,7 @@ class Matrix < ActiveRecord::Base
                                   attributes.clean_or_empty?(:criterium)
                                 }
 
-  has_many :options, dependent: :destroy
+  has_many :options, dependent: :destroy, inverse_of: :matrix
   # options(force_reload = false)
   # options<<(object, ...)
   # options.delete(object, ...)
@@ -99,5 +102,13 @@ class Matrix < ActiveRecord::Base
 
   def tie?
     winning_options.length > 1
+  end
+
+  def winner?
+    winning_options.length == 1
+  end
+
+  def winner_name
+    winning_options.first.name
   end
 end

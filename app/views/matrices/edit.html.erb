@@ -2,9 +2,15 @@
 
 <%= render 'layouts/progress', percent: 90 %>
 
-<a id='show-matrix-form' data-toggle="collapse" href="#editMatrixName" aria-expanded="false" aria-controls="editMatrixName">
-  Edit details
-</a>
+<ul class="list-inline">
+  <li><%= link_to 'Copy this Matrix', copy_matrix_path(@matrix), data: { confirm: 'Please confirm you would like to copy this matrix', method: 'post' } %></li>
+  <li>
+    <a id='show-matrix-form' data-toggle="collapse" href="#editMatrixName" aria-expanded="false" aria-controls="editMatrixName">
+      Edit details
+    </a>
+  </li>
+</ul>
+
 <div class="collapse" id="editMatrixName">
   <%= render 'form', edit: true %>
 </div>

@@ -2,12 +2,14 @@
 
 <%= render 'layouts/progress', percent: 100 %>
 
+<%= render 'layouts/errors', object: @matrix %>
+
 <div class="dec-form-description">
   <% if current_matrix_owner? %>
     <%= link_to 'Edit this matrix', edit_matrix_path(@matrix), id: 'edit-matrix' %>
   <% else %>
     <p>
-      Read only. Log in as the matrix owner to edit.
+      Read only. Log in as the matrix owner or <%= link_to 'copy this matrix', copy_matrix_path(@matrix), data: { confirm: 'Please confirm you would like to copy this matrix', method: 'post' } %> to edit.
     </p>
   <% end %>
 </div>
