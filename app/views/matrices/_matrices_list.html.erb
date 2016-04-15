@@ -1,6 +1,11 @@
 <% if matrices.any? %>
   <div class="col-sm-<%= column_size %>">
     <h5><%= heading %></h5>
+    <% if link_path %>
+      <%= link_to 'See all', link_path %>
+    <% else %>
+      <br>
+    <% end %>
     <ul class="nav nav-pills nav-stacked fa-ul">
       <% matrices.each do |matrix| %>
         <li>
