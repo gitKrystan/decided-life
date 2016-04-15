@@ -59,8 +59,7 @@
   <!-- Page header -->
   <% if content_for?(:header) %>
     <div class="page-header">
-      <h1><%= yield :header %><small><%= yield :header_buttons %></small></h1>
-
+      <h1><%= yield :header %> <%= yield :header_buttons %></h1>
     </div>
   <% end %>
 

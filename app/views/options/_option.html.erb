@@ -44,6 +44,9 @@
         </div>
         <div>
           <%= option.criterium_score(criterium) %>
+          <% unless option.criterium_score_description(criterium).blank? %>
+            : <%= option.criterium_score_description(criterium) %>
+          <% end %>
         </div>
       <% end %>
     </td>

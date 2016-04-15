@@ -1,6 +1,6 @@
 class MatrixStepsController < MatricesChildrenController
   include Wicked::Wizard
-  steps :criteria, :options
+  steps :options, :criteria
 
   def show
     case step

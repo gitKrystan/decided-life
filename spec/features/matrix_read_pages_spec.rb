@@ -7,7 +7,7 @@ feature 'Viewing a Matrix:' do
 
   scenario 'User is not logged in' do
     visit root_path
-    click_link test_matrix.name
+    click_link test_matrix.name, match: :first
     expect(page).to have_content(test_matrix.name)
     expect(page).to have_content('Read only')
     expect(current_path).to eq matrix_path(test_matrix)
@@ -16,7 +16,7 @@ feature 'Viewing a Matrix:' do
   scenario 'User is logged in as someone other than the owner' do
     login_as(somebody_else)
     visit root_path
-    click_link test_matrix.name
+    click_link test_matrix.name, match: :first
     expect(page).to have_content(test_matrix.name)
     expect(page).to have_content('Read only')
     expect(current_path).to eq matrix_path(test_matrix)
@@ -25,7 +25,7 @@ feature 'Viewing a Matrix:' do
   scenario 'User is logged in as the owner' do
     login_as(test_owner)
     visit root_path
-    click_link test_matrix.name
+    click_link test_matrix.name, match: :first
     expect(page).to have_content(test_matrix.name)
     expect(page).to have_css('#edit-matrix')
     expect(current_path).to eq matrix_path(test_matrix)

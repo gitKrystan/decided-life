@@ -8,6 +8,7 @@ class MatricesController < CrudController
 
   def index
     @my_matrices = Matrix.where(owner: current_user).order(created_at: :desc)
+    @krystan_matrices = Matrix.where(owner_id: 1).order(created_at: :desc)
     @other_matrices = Matrix.where.not(owner: current_user).order(created_at: :desc)
   end
 

@@ -10,6 +10,11 @@ form {
 .form-additional-options {
   @extend .well;
   @include make-sm-column(6);
+
+  input[type=submit] {
+    @extend .btn-success;
+    @extend .btn-block;
+  }
 }
 
 // scss-lint:enable SelectorFormat

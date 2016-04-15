@@ -1,21 +1,22 @@
 <% header @matrix.name %>
 
-<%= render 'layouts/progress', percent: 25 %>
+<%= render 'layouts/progress', percent: 45 %>
 
-<h5><b>Step 2:</b> Add Your Decision Criteria</h5>
+<h5><b>Step 3:</b> What factors will determine your decision?</h5>
 <div class="dec-form-description">
-  <b>First,</b> brainstorm the decision criteria that are most important. Narrow this list down to a manageable size.
-  <%= render 'criteria/tip' %>
+  <b>First,</b> determine which criteria or factors are important in your decision. Narrow this list down to a manageable size.
   For example:
   <div class="row">
     <div class="col-sm-6">
       <ul>
         <li>The Big Dig: Go or No-Go?<br>
+          <b>Criteria:</b>
           <span class="badge">Affordability</span>
           <span class="badge">Traffic Improvement</span>
           <span class="badge">Benefit to Society</span>
         </li>
         <li>What should we eat for dinner?<br>
+          <b>Criteria:</b>
           <span class="badge">Flavor</span>
           <span class="badge">Time to Table</span>
           <span class="badge">Healthfulness</span>
@@ -25,11 +26,13 @@
     <div class="col-sm-6">
       <ul>
         <li>How should I prioritize my bucket list?<br>
+          <b>Criteria:</b>
           <span class="badge">Low Risk</span>
           <span class="badge">Low Cost</span>
           <span class="badge">Awesomeness</span>
         </li>
         <li>Who should I nominate for the Supreme Court?<br>
+          <b>Criteria:</b>
           <span class="badge">Experience</span>
           <span class="badge">Political Alignment</span>
           <span class="badge">Chance of Being Approved</span>
@@ -39,8 +42,12 @@
   </div>
 </div>
 <div class="dec-form-description">
-  <b>Then,</b> for each criterium, select its relative importance. Each criterium will affect your decision outcome based on its importance.<br>
+  <b>Then,</b> for each criterium, select its relative importance. Each criterium will affect your decision outcome based on its importance.
 </div>
+<div class="dec-form-description">
+  <b>Optionally,</b> you can customize the rating system for a criterium by clicking the 'customize criterium scores' link. By default, score of zero means 'poor' while a score of five means 'best'.
+</div>
+<%= render 'criteria/tip' %>
 
 <%= render layout: 'form' do |f| %>
   <div id="criteria">

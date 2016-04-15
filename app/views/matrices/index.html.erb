@@ -6,5 +6,8 @@
   <%= link_to 'Click here to start a new decision', new_matrix_path, id: 'new-matrix', class: 'btn btn-success btn-lg btn-block' %>
 </div>
 
-<%= render 'matrices_list', matrices: @my_matrices, heading: 'Your decisions:' %>
-<%= render 'matrices_list', matrices: @other_matrices, heading: "Other users' decisions:" %>
+<div class="row" id="examples">
+  <%= render 'matrices_list', matrices: @my_matrices, heading: 'Your decisions:' %>
+  <%= render 'matrices_list', matrices: @krystan_matrices, heading: 'Example decisions:' %>
+  <%= render 'matrices_list', matrices: @other_matrices, heading: "Other users' decisions:" %>
+</div>

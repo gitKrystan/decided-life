@@ -46,12 +46,25 @@ class Option < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { scope: :matrix_id }
 
+  def get_criterium_score(criterium)
+    scores.find_by(criterium: criterium)
+  end
+
   def criterium_score(criterium)
-    criterium_score_record = scores.find_by(criterium: criterium)
+    criterium_score_record = get_criterium_score(criterium)
     if criterium_score_record
       criterium_score_record.amount
     else
       0
+    end
+  end
+
+  def criterium_score_description(criterium)
+    criterium_score_record = get_criterium_score(criterium)
+    if criterium_score_record
+      if criterium_score_record.bin
+        criterium_score_record.bin.description
+      end
     end
   end
 
