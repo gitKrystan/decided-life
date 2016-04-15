@@ -1,15 +1,15 @@
 <% header "#{@matrix.name}" %>
 
-<%= render 'layouts/progress', percent: 90 %>
+<% content_for :header_buttons do %>
+  <a id='show-matrix-form' data-toggle="collapse" href="#editMatrixName" aria-expanded="false" aria-controls="editMatrixName" class="btn-circle">
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+  </a>
+  <%= link_to copy_matrix_path(@matrix), class: "btn-circle", data: { confirm: 'Please confirm you would like to copy this matrix', method: 'post' } do %>
+    <i class="fa fa-copy" aria-hidden="true"></i>
+  <% end %>
+<% end %>
 
-<ul class="list-inline">
-  <li><%= link_to 'Copy this Matrix', copy_matrix_path(@matrix), data: { confirm: 'Please confirm you would like to copy this matrix', method: 'post' } %></li>
-  <li>
-    <a id='show-matrix-form' data-toggle="collapse" href="#editMatrixName" aria-expanded="false" aria-controls="editMatrixName">
-      Edit details
-    </a>
-  </li>
-</ul>
+<%= render 'layouts/progress', percent: 90 %>
 
 <div class="collapse" id="editMatrixName">
   <%= render 'form', edit: true %>

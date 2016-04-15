@@ -16,7 +16,7 @@ feature 'Creating a new Matrix:' do
   end
 
   scenario 'Moves to Add Option step' do
-    expect(page).to have_content('Add Your Options')
+    expect(page).to have_content('What are your options')
   end
 end
 
