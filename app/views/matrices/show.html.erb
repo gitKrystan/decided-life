@@ -41,5 +41,5 @@
 </div>
 
 <p>
-  This matrix was created by <%= @matrix.owner.name %>. <span class="pull-right"><%= link_to 'Create a new matrix!', new_matrix_path %></span>
+  This matrix was created by <%= link_to @matrix.owner.name, @matrix.owner %>. <span class="pull-right"><%= link_to 'Create a new matrix!', new_matrix_path %></span>
 </p>
