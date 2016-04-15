@@ -15,8 +15,8 @@ feature 'Creating a new Matrix:' do
     expect(page).to have_content('Test Matrix')
   end
 
-  scenario 'Moves to Add Criteria step' do
-    expect(page).to have_content('Add Another Criterium')
+  scenario 'Moves to Add Option step' do
+    expect(page).to have_content('Add Your Options')
   end
 end
 
@@ -38,14 +38,13 @@ feature 'Adding criteria: ' do
   background do
     login_as(test_user)
     visit matrix_steps_path(test_matrix)
+    click_link('skip this step')
   end
 
   scenario 'Adds new criteria when all validated fields are entered' do
     fill_in 'matrix_criteria_attributes_0_name', with: 'Test Criterium'
     click_button 'Continue'
     expect(page).to have_content('Your criteria have been updated.')
-    expect(page).to have_content('Add Another Option')
-    click_link('skip this step')
     expect(page).to have_content('Test Criterium')
   end
 
@@ -56,7 +55,6 @@ feature 'Adding criteria: ' do
     fill_in 'matrix_criteria_attributes_0_bins_attributes_2_description',
             with: 'barely acceptable'
     click_button 'Continue'
-    click_link('skip this step')
     expect(page).to have_content('Test Criterium')
     expect(page).to have_content('2: barely acceptable')
     expect(page).to have_content('100')
@@ -65,7 +63,6 @@ feature 'Adding criteria: ' do
   scenario 'Does not create criteria when no criterium is added' do
     click_button 'Continue'
     expect(page).to have_content('No criteria have been added.')
-    expect(page).to have_content('Add Another Option')
   end
 
   scenario 'Returns an error when fields are incorrectly entered' do
@@ -82,13 +79,13 @@ feature 'Adding options: ' do
   background do
     login_as(test_user)
     visit matrix_steps_path(test_matrix)
-    click_link('skip this step')
   end
 
   scenario 'Adds new options when all validated fields are entered' do
     fill_in 'matrix_options_attributes_0_name', with: 'Test Option'
     click_button 'Continue'
     expect(page).to have_content('Your options have been updated.')
+    click_link('skip this step')
     expect(page).to have_content('Test Matrix')
     expect(page).to have_content('Test Option')
   end
@@ -96,6 +93,7 @@ feature 'Adding options: ' do
   scenario 'Does not create options when no option is added' do
     click_button 'Continue'
     expect(page).to have_content('No options have been added.')
+    click_link('skip this step')
     expect(page).to have_content('Test Matrix')
   end
 end
