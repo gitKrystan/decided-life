@@ -4,7 +4,9 @@
   <%= yield f %>
 
   <div class="actions dec-after-form">
-    <%= f.submit 'Continue', class: 'btn, btn-success btn-lg btn-block'%>
-    or <%= link_to "skip this step", next_wizard_path %>
+    <div class="col-sm-12">
+      <%= f.submit 'Continue', class: 'btn, btn-success btn-lg btn-block'%>
+      or <%= link_to "skip this step", next_wizard_path %>
+    </div>
   </div>
 <% end %>
