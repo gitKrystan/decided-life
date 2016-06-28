@@ -7,7 +7,7 @@ class Option < ActiveRecord::Base
   # create_matrix!(attributes = {})
   validates :matrix, presence: true
 
-  has_many :scores
+  has_many :scores, dependent: :destroy
   # scores(force_reload = false)
   # scores<<(object, ...)
   # scores.delete(object, ...)

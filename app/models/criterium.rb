@@ -34,7 +34,7 @@ class Criterium < ActiveRecord::Base
   accepts_nested_attributes_for :bins,
                                 allow_destroy: true
 
-  has_many :scores
+  has_many :scores, dependent: :destroy
   # scores(force_reload = false)
   # scores<<(object, ...)
   # scores.delete(object, ...)

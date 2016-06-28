@@ -4,7 +4,7 @@ RSpec.describe Option, type: :model do
   it { should belong_to :matrix }
   it { should validate_presence_of :matrix }
 
-  it { should have_many(:scores) }
+  it { should have_many(:scores).dependent :destroy }
   it { should have_many(:criteria).through(:scores) }
   it { should accept_nested_attributes_for :scores }
 

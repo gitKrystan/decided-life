@@ -6,7 +6,7 @@ RSpec.describe Criterium, type: :model do
 
   it { should have_many(:bins).dependent :destroy }
 
-  it { should have_many(:scores) }
+  it { should have_many(:scores).dependent :destroy }
   it { should have_many(:options).through(:scores) }
 
   it { should validate_presence_of :name }
