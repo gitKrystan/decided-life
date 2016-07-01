@@ -79,3 +79,10 @@ group :test do
   gem 'launchy'
   gem 'poltergeist'
 end
+
+group :production do
+  # we need this for heroku
+  gem 'rails_12factor'
+end
+
+ruby '2.3.1'
