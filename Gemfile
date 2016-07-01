@@ -45,6 +45,9 @@ gem 'cocoon'
 # Clone records
 gem 'amoeba'
 
+# Analytics
+gem 'skylight'
+
 group :development, :test do
   gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to
